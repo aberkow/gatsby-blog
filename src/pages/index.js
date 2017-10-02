@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 export default function Index({
   data
 }) {
-  console.log(data, 'data');
   const { edges: posts } = data.allMarkdownRemark;
   return (
     <div className="home">
@@ -13,7 +12,6 @@ export default function Index({
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }) => {
-            console.log(post, 'post');
             return (
               <div className="blog-post-preview" key={post.id}>
                 <h1>
