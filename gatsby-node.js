@@ -25,6 +25,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             date
             path
             title
+            image
             tags
             author
             category
