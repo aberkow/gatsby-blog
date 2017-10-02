@@ -1,21 +1,13 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
+import { arrayReducer } from '../utils/helpers';
 
 export default function TagsPage({
   data
 }) {
   const { edges: posts } = data.allMarkdownRemark;
-  const tagsArray = posts.map(({ node }) => {
-    return node.frontmatter.tags;
-  })
-  .reduce((a, b) => {
-    return a.concat(b)
-  }, [])
-  .filter((tag, index, array) => {
-    return array.indexOf(tag) === index;
-  })
-  .sort();
+  const tagsArray = arrayReducer(posts, 'tags');
 
   const tagLinks = tagsArray.map((tag, index) => {
     return (

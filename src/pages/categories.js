@@ -1,40 +1,31 @@
 import React from 'react';
+import Link from 'gatsby-link';
 
-const getPostsByCategory = (evt) => {
-  const category = evt.target.innerHTML;
-  // needs to exclude <ul />
-  console.log(category, 'category');
+import { arrayReducer } from '../utils/helpers.js';
 
-  return category;
-}
-
-const setPostsByCategory = (category) => {
-  return category;
-}
-
-export default function CategoryArchive({
+export default function TagsPage({
   data
 }) {
-  const categoryArray = data.allMarkdownRemark.edges.reduce((a, b) => {
-    return a.concat(b);
-  }, [])
-  .sort()
-  .map(({ node: node }, index) => {
-    // console.log(node.frontmatter.category, 'node');
-    return <li key={index} className='category-item'>{node.frontmatter.category}</li>;
+  const { edges: posts } = data.allMarkdownRemark;
+  const categoryArray = arrayReducer(posts, 'category');
+
+  const categoryLinks = categoryArray.map((category, index) => {
+    return (
+      <li className="category-item" key={index}>
+        <Link className='category-list-link' to={`/categories/${category}`} key={index}>{category}</Link>
+      </li>
+    )
   });
 
   return (
-    <div>
-      <h1>Categories</h1>
-      <ul className="category-list" onClick={getPostsByCategory}>{categoryArray}</ul>
-    </div>
+    <ul className='categories-list'>{categoryLinks}</ul>
   );
 }
 
-export const categoryQuery = graphql`
-  query CategoryQuery {
-    allMarkdownRemark {
+export const query = graphql`
+  query CategoryPage {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
       edges {
         node {
           frontmatter {

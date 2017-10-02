@@ -1,5 +1,5 @@
 const path = require('path');
-
+const arrayReducer = require('./src/utils/helpers.js').arrayReducer;
 process.on('unhandledRejection', (reason, promise) => {
   console.log('Reason -> ', reason);
 });
@@ -8,6 +8,7 @@ process.on('unhandledRejection', (reason, promise) => {
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
   const blogPostTemplate = path.resolve(`src/templates/blog-post.js`);
+  const categoryTemplate = path.resolve(`src/templates/category-template.js`);
   const tagTemplate = path.resolve(`src/templates/tag-template.js`);
   
   return graphql(`{
@@ -45,18 +46,18 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           context: {}
         });
       });
-
-    const tagsArray = posts.map(({ node }) => {
-      return node.frontmatter.tags;
-    })
-    .reduce((a, b) => {
-      return a.concat(b);
-    }, [])
-    .filter((tag, index, array) => {
-      return array.indexOf(tag) === index;
-    })
-    .sort();
+    const categoryArray = arrayReducer(posts, 'category');
+    const tagsArray = arrayReducer(posts, 'tags');
     
+    categoryArray.forEach((category) => {
+      createPage({
+        path: `/categories/${category}`,
+        component: categoryTemplate,
+        context: {
+          category
+        }
+      });
+    });
     tagsArray.forEach((tag) => {
       createPage({
         path: `/tags/${tag}`,
@@ -67,7 +68,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       });
     });
 
-    // console.log(tagsArray, 'tagsArray');
+    
 
   });
 }

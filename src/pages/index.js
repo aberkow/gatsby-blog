@@ -9,11 +9,6 @@ export default function Index({
   const { edges: posts } = data.allMarkdownRemark;
   return (
     <div className="home">
-      <div className="links">
-        <ul className="link-list">
-          <Link to="/about">About</Link>
-        </ul>
-      </div>
       <div className="blog-posts">
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
