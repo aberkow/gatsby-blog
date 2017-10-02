@@ -5,8 +5,6 @@ import Helmet from 'react-helmet'
 
 require('prismjs/themes/prism-okaidia.css');
 
-import './index.css'
-
 const ListLink = props =>
   <li style={{ display: "inline-block" }}>
     <Link to={props.to}>
@@ -17,23 +15,23 @@ const ListLink = props =>
 const Header = () =>
   <div
     style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
+     // background: 'rebeccapurple',
+     // marginBottom: '1.45rem',
     }}
   >
     <div
       style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
+        // margin: '0 auto',
+        // maxWidth: 960,
+        // padding: '1.45rem 1.0875rem',
       }}
     >
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
-            color: 'white',
-            textDecoration: 'none',
+            // color: 'white',
+            // textDecoration: 'none',
           }}
         >
           Gatsby
@@ -59,10 +57,10 @@ const TemplateWrapper = ({ children }) =>
     <Header />
     <div
       style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
+        // margin: '0 auto',
+        // maxWidth: 960,
+        // padding: '0px 1.0875rem 1.45rem',
+        // paddingTop: 0,
       }}
     >
       {children()}
