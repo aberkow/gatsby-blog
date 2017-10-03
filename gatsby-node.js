@@ -25,7 +25,12 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             date
             path
             title
-            image
+            image {
+              base
+              name
+              relativePath
+              absolutePath
+            }
             tags
             author
             category
@@ -38,7 +43,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       return Promise.reject(result.errors);
     }
     const posts = result.data.allMarkdownRemark.edges;
-    
     posts
       .forEach(({ node }) => {
         createPage({
