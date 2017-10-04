@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
+import { NavWrapper } from '../utils/styles';
+
 require('prismjs/themes/prism-okaidia.css');
 
 const ListLink = props =>
@@ -13,37 +15,22 @@ const ListLink = props =>
   </li>
 
 const Header = () =>
-  <div
-    style={{
-     // background: 'rebeccapurple',
-     // marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        // margin: '0 auto',
-        // maxWidth: 960,
-        // padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
+  <NavWrapper>
+    <div>
+      <h1>
         <Link
           to="/"
-          style={{
-            // color: 'white',
-            // textDecoration: 'none',
-          }}
         >
-          Gatsby
+          Adam J Berkowitz
         </Link>
-        
       </h1>
+      <h2>Web Developer</h2>
       <ul style={{ listStyleType: 'none' }}>
           <ListLink to="/">Home</ListLink>
           <ListLink to="/about/">About</ListLink>
         </ul>
     </div>
-  </div>
+  </NavWrapper>
 
 const TemplateWrapper = ({ children }) =>
   <div>
@@ -56,12 +43,6 @@ const TemplateWrapper = ({ children }) =>
     />
     <Header />
     <div
-      style={{
-        // margin: '0 auto',
-        // maxWidth: 960,
-        // padding: '0px 1.0875rem 1.45rem',
-        // paddingTop: 0,
-      }}
     >
       {children()}
     </div>

@@ -1,18 +1,14 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+
+import { BlogPostWrapper } from '../utils/styles';
 
 export default function Index({
   data
 }) {
   const { edges: posts } = data.allMarkdownRemark;
-  const BlogPostWrapper = styled.div`
-    max-width: 600px;
-    margin: 10px auto;
-    padding: 10px 20px;
-    border: 1px solid;
-  `
   return (
     <div className="home">
       <div className="blog-posts">

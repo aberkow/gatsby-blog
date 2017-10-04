@@ -26,10 +26,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             path
             title
             image {
-              base
-              name
-              relativePath
-              absolutePath
+              childImageSharp {
+                original {
+                  src
+                }
+              }
             }
             tags
             author
