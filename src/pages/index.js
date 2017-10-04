@@ -1,11 +1,18 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
 export default function Index({
   data
 }) {
   const { edges: posts } = data.allMarkdownRemark;
+  const BlogPostWrapper = styled.div`
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border: 1px solid;
+  `
   return (
     <div className="home">
       <div className="blog-posts">
@@ -13,14 +20,15 @@ export default function Index({
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }) => {
             return (
-              <div className="blog-post-preview" key={post.id}>
+              <BlogPostWrapper className="blog-post-preview" key={post.id}>
+                <img src={post.frontmatter.image.childImageSharp.original.src} />
                 <h1>
                   <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
                 </h1>
                 <h2>{post.frontmatter.date}</h2>
                 <em>By {post.frontmatter.author}</em>
                 <p>{post.excerpt}</p>
-              </div>
+              </BlogPostWrapper>
             );
           })}
       </div>
@@ -40,6 +48,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             author
+            image {
+              childImageSharp {
+                original {
+                  src
+                }
+              }
+            }
           }
         }
       }

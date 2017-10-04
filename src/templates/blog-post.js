@@ -16,7 +16,6 @@ export default function Template({
     <div className="blog-post-container">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
       <div className="blog-post">
-        <img src={`${post.frontmatter.path}/${post.frontmatter.image.base}`} className='featured-image' />
         <img src={post.frontmatter.image.childImageSharp.original.src} className='featured-image' />
         <h1>{post.frontmatter.title}</h1>
         <h2>By {post.frontmatter.author}</h2>
