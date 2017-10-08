@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-// import styled from 'styled-components';
 
-import { BlogPostWrapper } from '../utils/styles';
+import { BlogPostWrapper, Home, ImageWrapper } from '../utils/styles';
 
 export default class Index extends React.Component {
   constructor (props) {
@@ -11,41 +10,45 @@ export default class Index extends React.Component {
     this.state = {
       backgroundImage: ''
     };
-    this.hoverHandler = this.getBackgroundImage.bind(this);
+    this.handleBackgroundImage = this.handleBackgroundImage.bind(this);
   }
-  getBackgroundImage(evt) {
+  handleBackgroundImage(evt) {
     let backgroundImage = evt.target.getAttribute('data-bgImage');
-    console.log(evt.target.getAttribute('data-bgImage'), 'image');
     this.setState({
-      backgroundImage: backgroundImage
+      backgroundImage
     });
+    console.log(this.state.backgroundImage, 'state');
   }
   render() {
     const { edges: posts } = this.props.data.allMarkdownRemark;
-    console.log(posts, this.state.backgroundImage);
+  
     return (
-      <div className="home">
+ 
+      <Home className="home">
         <div className="blog-posts">
           {posts
             .filter(post => post.node.frontmatter.title.length > 0)
-            .map(({ node: post }) => {
+            .map(({ node: post }, index) => {
               return (
-                <div>
-                  <h1>
+                <BlogPostWrapper className="post-container" key={`post-${index}`}>
+                  <h1>{`${index + 1}`} &ndash;
                     <Link className="post-link" 
                     to={post.frontmatter.path}
-                    onMouseOver={this.getBackgroundImage}
-                    data-bgImage={post.frontmatter.image.childImageSharp.original.src}>
-                      {post.frontmatter.title}
+                    key={`link-${index}`}
+                    onMouseOver={this.handleBackgroundImage}
+                    data-bgImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}>
+                      {` ${post.frontmatter.title}`}
                     </Link>
                   </h1>
-                  <h2>{post.frontmatter.date}</h2>
-                  <p>{post.excerpt}</p>
-                </div>
+                  <h2 className="post-date" key={`date-${index}`}>{post.frontmatter.date}</h2>
+                  <p className="post-excerpt" key={`excerpt-${index}`}>{post.excerpt}</p>
+                </BlogPostWrapper>
               );
             })}
         </div>
-      </div>
+        <ImageWrapper className='image-wrapper' backgroundImage={this.state.backgroundImage}>
+        </ImageWrapper>
+      </Home>
     );
   }
 }
@@ -59,12 +62,12 @@ export const pageQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MMM DD YYYY")
             path
             author
             image {
               childImageSharp {
-                original {
+                responsiveSizes {
                   src
                 }
               }

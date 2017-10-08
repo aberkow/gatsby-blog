@@ -27,7 +27,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             title
             image {
               childImageSharp {
-                original {
+                responsiveSizes {
                   src
                 }
               }

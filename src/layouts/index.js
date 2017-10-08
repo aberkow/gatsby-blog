@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-import { NavWrapper } from '../utils/styles';
+// import { TypographyStyle, GoogleFont } from 'react-typography';
+// import typography from '../utils/typography';
+
+import { HeaderWrapper, TitleStyle, SubTitleStyle } from '../utils/styles';
 
 require('prismjs/themes/prism-okaidia.css');
 
@@ -15,22 +18,17 @@ const ListLink = props =>
   </li>
 
 const Header = () =>
-  <NavWrapper>
-    <div>
-      <h1>
+  
+    <HeaderWrapper className='header-wrapper'>
+      <TitleStyle>
         <Link
           to="/"
         >
           Adam J Berkowitz
         </Link>
-      </h1>
-      <h2>Web Developer</h2>
-      <ul style={{ listStyleType: 'none' }}>
-          <ListLink to="/">Home</ListLink>
-          <ListLink to="/about/">About</ListLink>
-        </ul>
-    </div>
-  </NavWrapper>
+      </TitleStyle>
+      <SubTitleStyle>Web Developer</SubTitleStyle>
+    </HeaderWrapper>
 
 const TemplateWrapper = ({ children }) =>
   <div>
