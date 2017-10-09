@@ -24,7 +24,7 @@ export default class Index extends Component {
     return (
  
       <Home className="home">
-        <PostsContainer className="blog-posts">
+        <PostsContainer className="posts-container">
           {posts
             .filter(post => post.node.frontmatter.title.length > 0)
             .map(({ node: post }, index) => {
@@ -40,7 +40,7 @@ export default class Index extends Component {
               });
               console.log(tagItems, 'tagItems');
               return (
-                <BlogPostWrapper className="post-container" key={`post-${index}`}>
+                <BlogPostWrapper className="blog-post-wrapper" key={`post-${index}`}>
                   <h3>{`${totalPosts - index}`} &ndash;
                     <Link className="post-link" 
                     to={post.frontmatter.path}
