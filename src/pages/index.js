@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
-import { BlogPostWrapper, Home, ImageWrapper } from '../utils/styles';
+import { BlogPostWrapper, Home, ImageWrapper, PostsContainer, TagList, TagListItem } from '../utils/styles';
 
-export default class Index extends React.Component {
+export default class Index extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -17,21 +17,31 @@ export default class Index extends React.Component {
     this.setState({
       backgroundImage
     });
-    console.log(this.state.backgroundImage, 'state');
   }
   render() {
     const { edges: posts } = this.props.data.allMarkdownRemark;
-  
+    const totalPosts = posts.length;
     return (
  
       <Home className="home">
-        <div className="blog-posts">
+        <PostsContainer className="blog-posts">
           {posts
             .filter(post => post.node.frontmatter.title.length > 0)
             .map(({ node: post }, index) => {
+              {/* An alphabetical list of tags with links */}
+              const tagItems = post.frontmatter.tags.sort().map((tag, index) => {
+                return (
+                  <TagListItem key={`tag-item-${index}`} className="tag-item">
+                    <Link key={`tag-link-${index}`} to={`/tags/${tag}`}>
+                      {tag}
+                    </Link>
+                  </TagListItem>
+                );
+              });
+              console.log(tagItems, 'tagItems');
               return (
                 <BlogPostWrapper className="post-container" key={`post-${index}`}>
-                  <h1>{`${index + 1}`} &ndash;
+                  <h3>{`${totalPosts - index}`} &ndash;
                     <Link className="post-link" 
                     to={post.frontmatter.path}
                     key={`link-${index}`}
@@ -39,13 +49,14 @@ export default class Index extends React.Component {
                     data-bgImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}>
                       {` ${post.frontmatter.title}`}
                     </Link>
-                  </h1>
-                  <h2 className="post-date" key={`date-${index}`}>{post.frontmatter.date}</h2>
+                  </h3>
+                  <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
                   <p className="post-excerpt" key={`excerpt-${index}`}>{post.excerpt}</p>
+                  <TagList className='tag-list'><span>Tags:</span>{tagItems}</TagList>
                 </BlogPostWrapper>
               );
             })}
-        </div>
+        </PostsContainer>
         <ImageWrapper className='image-wrapper' backgroundImage={this.state.backgroundImage}>
         </ImageWrapper>
       </Home>
@@ -64,7 +75,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMM DD YYYY")
             path
-            author
+            tags
             image {
               childImageSharp {
                 responsiveSizes {

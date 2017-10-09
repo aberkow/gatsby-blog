@@ -4,8 +4,12 @@ module.exports = {
   Home: styled.div`
     display: flex;
     max-width: 1220px;
+    height: 600px;
     margin: 0 auto;
     padding: 20px;
+  `,
+  PostsContainer: styled.div`
+    width: 50%;
   `,
   BlogPostWrapper: styled.div`
     position: relative;
@@ -24,7 +28,7 @@ module.exports = {
     top: 0;
     bottom: 0;
     right: 0;
-    width: 600px;
+    width: 50%;
     background-image: url(${
       props => props.backgroundImage || ''
     });
@@ -40,13 +44,14 @@ module.exports = {
     margin: 0;
     flex-grow: 0;
   `,
-  PsuedoBGImage: styled.img`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    opacity: 0.6;
+  TagList: styled.ul`
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: 0;
+  `,
+  TagListItem: styled.li`
+    margin: 0 10px;
+    display: inline-block;
   `
 };
 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
+// import Header from './Header/header';
+
 // import { TypographyStyle, GoogleFont } from 'react-typography';
 // import typography from '../utils/typography';
 
@@ -10,12 +12,12 @@ import { HeaderWrapper, TitleStyle, SubTitleStyle } from '../utils/styles';
 
 require('prismjs/themes/prism-okaidia.css');
 
-const ListLink = props =>
-  <li style={{ display: "inline-block" }}>
-    <Link to={props.to}>
-      {props.children}
-    </Link>
-  </li>
+// const ListLink = props =>
+//   <li style={{ display: "inline-block" }}>
+//     <Link to={props.to}>
+//       {props.children}
+//     </Link>
+//   </li>
 
 const Header = () =>
   

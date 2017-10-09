@@ -2,10 +2,11 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 
+import { Home } from '../utils/styles';
+
 export default function Template({
   data
 }) {
-  console.log(data, 'data');
   const { markdownRemark: post } = data;
   const tagsList = post.frontmatter.tags.map((tag, index) => {
     return (
@@ -13,10 +14,10 @@ export default function Template({
     );
   });
   return (
-    <div className="blog-post-container">
+    <Home className="blog-post-container">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
       <div className="blog-post">
-        <img src={post.frontmatter.image.childImageSharp.original.src} className='featured-image' />
+        <img src={post.frontmatter.image.childImageSharp.responsiveSizes.src} className='featured-image' />
         <h1>{post.frontmatter.title}</h1>
         <h2>By {post.frontmatter.author}</h2>
         <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -27,7 +28,7 @@ export default function Template({
           {tagsList}
         </ul>
       </div>
-    </div>
+    </Home>
   );
 }
 
@@ -43,14 +44,8 @@ export const pageQuery = graphql`
         author
         category
         image {
-          base
-          name
-          relativePath
-          absolutePath
           childImageSharp {
-            original {
-              width
-              height
+            responsiveSizes {
               src
             }
           }
