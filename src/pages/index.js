@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-
+import MetaContainer from '../layouts/MetaContainer/metacontainer';
 import { BlogPostWrapper, Home, ImageWrapper, PostsContainer, TagList, TagListItem } from '../utils/styles';
 
 export default class Index extends Component {
@@ -38,7 +38,6 @@ export default class Index extends Component {
                   </TagListItem>
                 );
               });
-              console.log(tagItems, 'tagItems');
               return (
                 <BlogPostWrapper className="blog-post-wrapper" key={`post-${index}`}>
                   <h3>{`${totalPosts - index}`} &ndash;
@@ -59,6 +58,7 @@ export default class Index extends Component {
         </PostsContainer>
         <ImageWrapper className='image-wrapper' backgroundImage={this.state.backgroundImage}>
         </ImageWrapper>
+            
       </Home>
     );
   }
