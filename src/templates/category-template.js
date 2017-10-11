@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 
+import { postsWithDataFilter } from '../utils/helpers';
+
 export default class CategoryRoute extends Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges;
-    const postLinks = posts.map((post, index) => {
+    categoryToFind = this.props.pathContext.category;
+    const filteredPosts = postsWithDataFilter(posts, 'category', categoryToFind);
+    const postLinks = filteredPosts.map((post, index) => {
       return (
-        <li className='category-list-item' key={index}>
-          <Link className='category-list-link' to={post.node.frontmatter.path} key={index}>{post.node.frontmatter.title}</Link>
+        <li className='category-list-item' key={`item-${index}`}>
+          <Link className='category-list-link' to={post.node.frontmatter.path} key={`link-${index}`}>{post.node.frontmatter.title}</Link>
         </li>
       )
     })
@@ -28,6 +32,7 @@ export const query = graphql`
           frontmatter {
             path
             title
+            category
           }
         }
       }

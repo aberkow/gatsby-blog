@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 
+import { postsWithDataFilter } from '../utils/helpers';
+
 export default class TagRoute extends Component {
   render() {
+    const tagToFind = this.props.pathContext.tag;
     const posts = this.props.data.allMarkdownRemark.edges;
-    const postLinks = posts.map((post, index) => {
+    const filteredPosts = postsWithDataFilter(posts, 'tags', tagToFind);
+
+    const postLinks = filteredPosts.map((post, index) => {
+      const tagsArray = post.node.frontmatter.tags;
       return (
-        <li className='tag-list-item' key={index}>
-          <Link className='tag-list-link' to={post.node.frontmatter.path} key={index}>{post.node.frontmatter.title}</Link>
+        <li className='tag-list-item' key={`item-${index}`}>
+          <Link className='tag-list-link' to={post.node.frontmatter.path} key={`link-${index}`}>{post.node.frontmatter.title}</Link>
         </li>
       )
     })
@@ -28,6 +34,7 @@ export const query = graphql`
           frontmatter {
             path
             title
+            tags
           }
         }
       }
