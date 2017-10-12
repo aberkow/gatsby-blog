@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from './media-query-sizes';
 
 module.exports = {
   Home: styled.div`
@@ -35,6 +36,7 @@ module.exports = {
     background-repeat: no-repeat;
     background-position: center;
     transition-duration: 0.5s;
+    ${media.tablet`display: none;`}
   `,
   TitleStyle: styled.h1`
     margin: 0;
