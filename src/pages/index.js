@@ -23,7 +23,7 @@ export default class Index extends Component {
     const totalPosts = posts.length;
     return (
  
-      <Home className="home">
+      <div className="home">
         <PostsContainer className="posts-container">
           {posts
             .filter(post => post.node.frontmatter.title.length > 0)
@@ -59,7 +59,7 @@ export default class Index extends Component {
         <ImageWrapper className='image-wrapper' backgroundImage={this.state.backgroundImage}>
         </ImageWrapper>
             
-      </Home>
+      </div>
     );
   }
 }

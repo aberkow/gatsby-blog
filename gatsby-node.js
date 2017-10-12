@@ -65,7 +65,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       });
     });
     tagsArray.forEach((tag) => {
-      console.log(tag);
       const test = createPage({
         path: `/tags/${tag}`,
         component: tagTemplate,
@@ -73,120 +72,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           tag
         }
       });
-      console.log(test);
     });
-
-    
-
   });
 }
-
-
-    // result.data.allMarkdownRemark.edges
-    //   .forEach(({ node }) => {
-    //     console.log('hi!!!!!');
-    //   })
-    // console.log(tagArray, 'tagArray');
-
-// const allTags = posts.map((post) => {
-    //   return post.frontmatter.tags;
-    // });
-    // console.log(allTags, 'posts, allTags');
-    // createTagPage(createPage, posts);
-    // createCategoryPage(createPage, posts);
-
-// console.log(node.frontmatter.tags, 'tags');
-        // node.frontmatter.tags.forEach((tag, index) => {
-        //   tagArray.push(tag);
-        // })
-
-// exports.createPages = ({ boundActionCreators, graphql }) => {
-//   const { createPage } = boundActionCreators;
-//   const tagPageTemplate = path.resolve('./src/templates/tags.js');
-
-//   return graphql(`{
-//     allMarkdownRemark(
-//       sort: { order: DESC, fields: [frontmatter___date] }
-//       limit: 1000
-//     ) {
-//       edges {
-//         node {
-//           id
-//           frontmatter {
-//             tags
-//           }
-//         }
-//       }
-//     }
-//   }`).then(result => {
-//       if (result.errors) {
-//         console.log(`Errors -> ${result.errors}`);
-//         return Promise.reject(result.errors);
-//       }
-//       result.data.allMarkdownRemark.edges
-//         .forEach(({ node }) => {
-//           console.log(node, 'node');
-//           createPage({
-//             path: node.frontmatter.tags,
-//             component: tagPageTemplate,
-//             context: {}
-//           });
-//         });
-//         console.log(`Result -> ${result}`);
-//     });
-// }
-
-// create tag pages from template
-
-
-// const createCategoryPage = (createPage, edges) => {
-//   const categoryTemplate = path.resolve(`src/templates/category-archive.js`);
-//   // const categoryArray = [];
-//   const categoryArray = edges.map(({ node }) => {
-//     return node.frontmatter.category;
-//   })
-//   .reduce((a, b) => {
-//     return a.concat(b);
-//   }, [])
-//   .sort();
-//   // console.log(categoryArray, 'categoryArray');
-//   createPage({
-//     path: `/categories`,
-//     component: categoryTemplate,
-//     context: { categoryArray }
-//   });
-// };
-
-// const createTagPage = (createPage, edges) => {
-//   const tagTemplate = path.resolve(`src/templates/tags.js`);
-//   // console.log(createPage, 'start', edges, 'end');
-//   // tag pages can be at `tag/${tagname}`
-//   const tags = [];
-//   const tagsAndCounts = {};
-//   edges.forEach(({ node }) => {
-//     tags.push(node.frontmatter.tags);
-//   });
-//   console.log('start node', tags, 'end node');
-//   const tagsArray = tags.reduce((a, b) => {
-//     // console.log('a, b start', a, b, 'a, b');
-//     // con// st test = a.concat(b);
-//     // console.log('test', test, 'test');
-//     return a.concat(b);
-//   }, []);
-//   tagsArray.forEach((tag) => {
-//     tagsAndCounts[tag] = (tagsAndCounts[tag] || 0) + 1;
-//   });
-//   console.log(tagsArray, tagsAndCounts, 'tagsArray');
-
-//   createPage({
-//     path: `/tags`,
-//     component: tagTemplate,
-//     context: { tagsAndCounts }
-//     // context: { tagsArray }
-//   });
-// };
-
-
-
-
 

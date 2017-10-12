@@ -5,7 +5,6 @@ module.exports = {
   Home: styled.div`
     display: flex;
     max-width: 1220px;
-    height: 600px;
     margin: 0 auto;
     padding: 20px;
   `,
@@ -15,7 +14,6 @@ module.exports = {
   BlogPostWrapper: styled.div`
     position: relative;
     overflow: hidden;
-    max-width: 600px;
   `,
   HeaderWrapper: styled.div`
     display: flex;

@@ -2,8 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 
-import { Home } from '../utils/styles';
-
 export default function Template({
   data
 }) {
@@ -14,8 +12,8 @@ export default function Template({
     );
   });
   return (
-    <Home className="blog-post-container">
-      <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
+    <div className="blog-post-container">
+      <Helmet title={`AJB - ${post.frontmatter.title}`} />
       <div className="blog-post">
         <img src={post.frontmatter.image.childImageSharp.responsiveSizes.src} className='featured-image' />
         <h1>{post.frontmatter.title}</h1>
@@ -28,7 +26,7 @@ export default function Template({
           {tagsList}
         </ul>
       </div>
-    </Home>
+    </div>
   );
 }
 
