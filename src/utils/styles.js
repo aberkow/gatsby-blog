@@ -36,6 +36,9 @@ module.exports = {
     transition-duration: 0.5s;
     ${media.tablet`display: none;`}
   `,
+  MenuWrapper: styled.div`
+    display: ${props => props.isMenuOpen ? 'block' : 'none' }
+  `,
   TitleStyle: styled.h1`
     margin: 0;
     flex-grow: 1;
