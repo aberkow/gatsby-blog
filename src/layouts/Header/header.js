@@ -1,6 +1,6 @@
 import Link from 'gatsby-link';
 import React, { Component } from 'react';
-
+import Menu from './menu';
 import { HeaderWrapper } from '../../utils/styles';
 
 export default class Header extends Component {
@@ -12,6 +12,7 @@ export default class Header extends Component {
     this.menuHandler = this.menuHandler.bind(this);
   }
   menuHandler(evt) {
+    console.log(evt.target);
     this.setState(prevState => ({
       isMenuOpen: !prevState.isMenuOpen
     }))
@@ -26,10 +27,8 @@ export default class Header extends Component {
             Adam J Berkowitz
           </Link>
         </h1>
-        <div id='menu-wrapper'>
-          <h2 id='menu-label'
-          onClick={this.menuHandler}>{this.state.isMenuOpen ? 'CLOSE' : 'MENU'}</h2>
-        </div>
+        <Menu onClick={this.menuHandler} isMenuOpen={this.state.isMenuOpen} />
+        
       </HeaderWrapper>
     );
   }
