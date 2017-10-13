@@ -9,19 +9,6 @@ import { Home, HeaderWrapper, TitleStyle, SubTitleStyle } from '../utils/styles'
 
 require('prismjs/themes/prism-okaidia.css');
 
-// const Header = () =>
-  
-//     <HeaderWrapper className='header-wrapper'>
-//       <TitleStyle>
-//         <Link
-//           to="/"
-//         >
-//           Adam J Berkowitz
-//         </Link>
-//       </TitleStyle>
-//       <SubTitleStyle>Web Developer</SubTitleStyle>
-//     </HeaderWrapper>
-
 const TemplateWrapper = ({ children }) =>
   <div>
     <Helmet

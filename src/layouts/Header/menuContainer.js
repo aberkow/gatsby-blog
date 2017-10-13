@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-import MenuWrapper from '../../utils/styles';
+import Link from 'gatsby-link';
+
+const ListLink = (props) => 
+  <li>
+    <h1>
+      <Link to={props.to}>{props.children}</Link>
+    </h1>
+  </li>
 
 const MenuContainer = (props) =>
-  <MenuWrapper isMenuOpen={this.props.isMenuOpen}
+  <div
+    style={{display: props.menuDisplay}}
     className="menu-wrapper">
-    <p>test</p>
-  </MenuWrapper>
+    <ul>
+      <ListLink to="/">Home</ListLink>
+      <ListLink to="/about">About</ListLink>
+    </ul>
+  </div>
 
-export default MenuContainer
-
-
-// export default class MenuContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <MenuWrapper isMenuOpen={this.props.isMenuOpen}
-//           className="menu-wrapper">
-//           hello
-//         </MenuWrapper>
-//       </div>
-//     )
-//   }
-// }
+export default MenuContainer;

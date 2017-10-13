@@ -7,13 +7,15 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMenuOpen: false
+      isMenuOpen: false,
+      menuDisplay: 'block'
     }
     this.menuHandler = this.menuHandler.bind(this);
   }
   menuHandler(evt) {
     this.setState(prevState => ({
-      isMenuOpen: !prevState.isMenuOpen
+      isMenuOpen: !prevState.isMenuOpen,
+      menuDisplay: prevState.isMenuOpen ? 'block' : 'none'
     }))
   }
   render() {
@@ -26,7 +28,10 @@ export default class Header extends Component {
             Adam J Berkowitz
           </Link>
         </h1>
-        <Menu onClick={this.menuHandler} isMenuOpen={this.state.isMenuOpen} />
+        <Menu 
+          isMenuOpen={this.state.isMenuOpen} 
+          menuDisplay={this.state.menuDisplay} 
+          onClick={this.menuHandler} />
         
       </HeaderWrapper>
     );

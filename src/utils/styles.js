@@ -5,6 +5,7 @@ module.exports = {
   Home: styled.div`
     display: flex;
     max-width: 1220px;
+    height: 600px;
     margin: 0 auto;
     padding: 20px;
   `,
@@ -14,6 +15,7 @@ module.exports = {
   BlogPostWrapper: styled.div`
     position: relative;
     overflow: hidden;
+    max-width: 600px;
   `,
   HeaderWrapper: styled.div`
     display: flex;
@@ -36,9 +38,6 @@ module.exports = {
     transition-duration: 0.5s;
     ${media.tablet`display: none;`}
   `,
-  MenuWrapper: styled.div`
-    display: ${props => props.isMenuOpen ? 'block' : 'none' }
-  `,
   TitleStyle: styled.h1`
     margin: 0;
     flex-grow: 1;
@@ -55,17 +54,8 @@ module.exports = {
   TagListItem: styled.li`
     margin: 0 10px;
     display: inline-block;
+  `,
+  MenuWrapper: styled.div`
+    display: ${ props =>  props.isMenuOpen ? 'block' : 'none' };
   `
 };
-
-
-// &::after {
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   opacity: 0.5;
-//   z - index: 1;
-// }
