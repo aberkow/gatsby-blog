@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import MetaContainer from '../layouts/MetaContainer/metacontainer';
-import { BlogPostWrapper, Home, ImageWrapper, PostsContainer, TagList, TagListItem } from '../utils/styles';
+import { BlogPostContent, BlogPostDetails, BlogPostDetailsInner, BlogPostWrapper, Home, ImageWrapper, PostsContainer, TagList, TagListItem } from '../utils/styles';
 
 export default class Index extends Component {
   constructor (props) {
@@ -40,6 +40,7 @@ export default class Index extends Component {
               });
               return (
                 <BlogPostWrapper className="blog-post-wrapper" key={`post-${index}`}>
+                  <BlogPostContent className="blog-post-content">
                   <h3>{`${totalPosts - index}`} &ndash;
                     <Link className="post-link" 
                     to={post.frontmatter.path}
@@ -49,9 +50,15 @@ export default class Index extends Component {
                       {` ${post.frontmatter.title}`}
                     </Link>
                   </h3>
-                  <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
                   <p className="post-excerpt" key={`excerpt-${index}`}>{post.excerpt}</p>
+                  <BlogPostDetails>
+                    <BlogPostDetailsInner>
+                  <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
+                  
                   <TagList className='tag-list'><span>Tags:</span>{tagItems}</TagList>
+                  </BlogPostDetailsInner>
+                  </BlogPostDetails>
+                  </BlogPostContent>
                 </BlogPostWrapper>
               );
             })}

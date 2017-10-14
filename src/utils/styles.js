@@ -3,9 +3,24 @@ import media from './media-query-sizes';
 
 module.exports = {
   BlogPostWrapper: styled.div`
+    flex: 1 1 50%;
     position: relative;
-    overflow: hidden;
-    max-width: 600px;
+    border: 1px solid #efefef;
+    height: 350px;
+  `,
+  BlogPostContent: styled.div`
+    padding: 0 0 30px;
+  `,
+  BlogPostDetails: styled.div`
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  `,
+  BlogPostDetailsInner: styled.div`
+    border-top: 1px solid #efefef;
+    margin: 0 30px;
+    padding: 30px 0;
   `,
   HeaderWrapper: styled.div`
   display: flex;
@@ -36,7 +51,9 @@ module.exports = {
     ${media.tablet`display: none;`}
   `,
   PostsContainer: styled.div`
-    width: 50%;
+    display: flex;
+    max-width: 1220px;
+    margin: 0 auto;
     `,
   SubTitleStyle: styled.h2`
     margin: 0;
