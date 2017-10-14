@@ -2,27 +2,24 @@ import styled from 'styled-components';
 import media from './media-query-sizes';
 
 module.exports = {
-  Home: styled.div`
-    display: flex;
-    max-width: 1220px;
-    height: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  `,
-  PostsContainer: styled.div`
-    width: 50%;
-  `,
   BlogPostWrapper: styled.div`
     position: relative;
     overflow: hidden;
     max-width: 600px;
   `,
   HeaderWrapper: styled.div`
+  display: flex;
+  align-items: baseline;
+  max-width: 1220px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+  `,
+  Home: styled.div`
     display: flex;
-    align-items: baseline;
     max-width: 1220px;
-    margin: 20px auto 40px;
-    padding: 0 20px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 20px;
   `,
   ImageWrapper: styled.div`
     position: relative;
@@ -38,10 +35,9 @@ module.exports = {
     transition-duration: 0.5s;
     ${media.tablet`display: none;`}
   `,
-  TitleStyle: styled.h1`
-    margin: 0;
-    flex-grow: 1;
-  `,
+  PostsContainer: styled.div`
+    width: 50%;
+    `,
   SubTitleStyle: styled.h2`
     margin: 0;
     flex-grow: 0;
@@ -55,7 +51,9 @@ module.exports = {
     margin: 0 10px;
     display: inline-block;
   `,
-  MenuWrapper: styled.div`
-    display: ${ props =>  props.isMenuOpen ? 'block' : 'none' };
-  `
+  TitleStyle: styled.h1`
+    margin: 0;
+    flex-grow: 1;
+  `,
 };
+

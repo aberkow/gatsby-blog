@@ -8,14 +8,14 @@ export default class Header extends Component {
     super(props);
     this.state = {
       isMenuOpen: false,
-      menuDisplay: 'block'
+      menuDisplay: 'none'
     }
     this.menuHandler = this.menuHandler.bind(this);
   }
   menuHandler(evt) {
     this.setState(prevState => ({
       isMenuOpen: !prevState.isMenuOpen,
-      menuDisplay: prevState.isMenuOpen ? 'block' : 'none'
+      menuDisplay: !prevState.isMenuOpen ? 'block' : 'none'
     }))
   }
   render() {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 
+import MenuWrapper from '../../utils/styles';
+
 const ListLink = (props) => 
   <li>
     <h1>
@@ -8,9 +10,9 @@ const ListLink = (props) =>
     </h1>
   </li>
 
-const MenuContainer = (props) =>
+const MenuContainer = (props) => 
   <div
-    style={{display: props.menuDisplay}}
+    style = {{display: props.menuDisplay }}
     className="menu-wrapper">
     <ul>
       <ListLink to="/">Home</ListLink>
@@ -19,3 +21,5 @@ const MenuContainer = (props) =>
   </div>
 
 export default MenuContainer;
+
+
