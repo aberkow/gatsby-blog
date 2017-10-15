@@ -34,6 +34,11 @@ const TemplateWrapper = ({ children }) =>
           body a:visited {
             color: red;
           }
+          code {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 2px;
+          }
           pre[class*="language-"] {
             border-radius: 0;
           }
