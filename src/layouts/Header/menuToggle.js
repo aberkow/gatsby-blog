@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { MenuToggleText } from '../../utils/styles';
 
 export default class MenuToggle extends Component {
   constructor(props) {
@@ -7,10 +8,10 @@ export default class MenuToggle extends Component {
   render() {
     return (
       <div id='menu-wrapper'>
-        <h2 onClick={this.props.onClick} id='menu-label'>
+        <MenuToggleText onClick={this.props.onClick} id='menu-label'>
     
           {this.props.isMenuOpen ? 'CLOSE' : 'MENU'}
-        </h2>
+        </MenuToggleText>
       </div>
     )
   }

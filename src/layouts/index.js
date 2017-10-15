@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 
 import Header from '../layouts/Header/header';
 
-import { Home, HeaderWrapper, TitleStyle, SubTitleStyle } from '../utils/styles';
+import { ContentWrapper, HeaderWrapper, TitleStyle, SubTitleStyle } from '../utils/styles';
 
 require('prismjs/themes/prism-okaidia.css');
 
@@ -19,9 +19,9 @@ const TemplateWrapper = ({ children }) =>
       ]}
     />
     <Header />
-    <Home className="test">
+    <ContentWrapper className="content-wrapper">
       {children()}
-    </Home>
+    </ContentWrapper>
   </div>
 
 TemplateWrapper.propTypes = {
