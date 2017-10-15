@@ -1,16 +1,22 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import { BlogPostBuffer, BlogPostContainer, FeaturedImage } from '../utils/styles';
+import { BlogPostBuffer, BlogPostContainer, FeaturedImage, TagList, TagListItem } from '../utils/styles';
 
 export default function Template({
   data
 }) {
+  console.log(data);
   const { markdownRemark: post } = data;
   const tagsList = post.frontmatter.tags.map((tag, index) => {
     return (
-      <li key={index}>{tag}</li>
+      <TagListItem key={index}>
+        <Link to={`/tags/${tag}`}>
+          {tag}
+        </Link>
+      </TagListItem>
     );
   });
   return (
@@ -24,13 +30,22 @@ export default function Template({
         <div className="blog-post">
           
           <h1>{post.frontmatter.title}</h1>
+          <em>{`Reading Time About ${post.timeToRead} ${post.timeToRead < 1 ? 'minutes' : 'minute' }`}</em>
           <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
         <div className="meta-container">
-          <p>{post.frontmatter.category}</p>
-          <ul className="tag-list">
+          <p>
+            <span>
+              {`Category: `}
+            </span>
+            <Link to={`/categories/${post.frontmatter.category}`}>   
+              {post.frontmatter.category}
+            </Link>
+          </p>
+          <TagList className="tag-list">
+            <span>Tags:</span>
             {tagsList}
-          </ul>
+          </TagList>
         </div>
       </BlogPostBuffer>
     </BlogPostContainer>
@@ -41,6 +56,7 @@ export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
+      timeToRead
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path
