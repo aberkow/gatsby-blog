@@ -13,6 +13,7 @@ export default class Menu extends Component {
           onClick={this.props.onClick} 
           isMenuOpen={this.props.isMenuOpen} />
         <MenuContainer
+          onClick={this.props.onClick}
           menuDisplay={this.props.menuDisplay} />
       </div>
     )

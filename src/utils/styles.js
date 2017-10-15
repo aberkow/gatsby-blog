@@ -69,7 +69,10 @@ module.exports = {
     padding: 20px;
   `,
   MenuToggleText: styled.h2`
+    border-bottom: 4px solid;
     margin-right: 60px;
+    position: relative;
+    z-index: 1000;
   `,
   PostsContainer: styled.div`
     display: flex;
@@ -101,5 +104,23 @@ module.exports = {
     margin: 0;
     flex-grow: 1;
   `,
+  MenuWrapper: styled.div`
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  `,
+  MenuList: styled.ul`
+    list-style-type: none;
+    margin: 0,
+    text-align: center;
+    transform: translate(-50%, 100%);
+    position: absolute;
+    top: 0;
+    left: 50%;
+  `
 };
 
