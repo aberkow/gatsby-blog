@@ -69,10 +69,21 @@ module.exports = {
     padding: 20px;
   `,
   MenuToggleText: styled.h2`
-    border-bottom: 4px solid;
+    border-bottom: 2px solid transparent;
     margin-right: 60px;
     position: relative;
+    transition: all 0.4s ease-out;
     z-index: 1000;
+    &:hover {
+      border-bottom: 2px solid;
+      cursor: pointer;
+      transition: all 0.4s ease-out;
+    }
+    ${media.tablet`
+      transform: rotateZ(90deg);
+      padding: 0 0 0 40px;
+      margin: 0;
+    `}
   `,
   PostsContainer: styled.div`
     display: flex;

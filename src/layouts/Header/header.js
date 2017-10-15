@@ -13,7 +13,6 @@ export default class Header extends Component {
     this.menuHandler = this.menuHandler.bind(this);
   }
   menuHandler(evt) {
-    console.log(evt.target);
     this.setState(prevState => ({
       isMenuOpen: !prevState.isMenuOpen,
       menuDisplay: !prevState.isMenuOpen ? 'block' : 'none'

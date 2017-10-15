@@ -18,6 +18,27 @@ const TemplateWrapper = ({ children }) =>
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
+    <style type="text/css">
+      {`
+          body a {
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.4s ease-out;
+            color: blue;
+          }
+          body a:hover {
+            border-bottom: 2px solid;
+            transition: all 0.4s ease-out;
+            color: green;
+          }
+          body a:visited {
+            color: red;
+          }
+          pre[class*="language-"] {
+            border-radius: 0;
+          }
+      `}
+    </style>
     <Header />
     <ContentWrapper className="content-wrapper">
       {children()}
