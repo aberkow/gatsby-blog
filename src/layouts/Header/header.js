@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import React, { Component } from 'react';
 import Menu from './menu';
-import { HeaderWrapper } from '../../utils/styles';
+import { HeaderTitle, HeaderWrapper } from '../../utils/styles';
 
 export default class Header extends Component {
   constructor(props) {
@@ -21,13 +21,13 @@ export default class Header extends Component {
   render() {
     return (
       <HeaderWrapper className='header-wrapper'>
-        <h1>
+        <HeaderTitle>
           <Link
             to="/"
           >
             Adam J Berkowitz
           </Link>
-        </h1>
+        </HeaderTitle>
         <Menu 
           isMenuOpen={this.state.isMenuOpen} 
           menuDisplay={this.state.menuDisplay} 

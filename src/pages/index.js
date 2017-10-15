@@ -2,28 +2,18 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import MetaContainer from '../layouts/MetaContainer/metacontainer';
-import { BlogPostWrapper, Home, ImageWrapper, PostsContainer, TagList, TagListItem } from '../utils/styles';
+import { BlogPostContent, BlogPostDetails, BlogPostDetailsInner, BlogPostFeaturedImage, BlogPostWrapper, CategoryDetail, PostsContainer, PostExcerpt, PostsWrapper, TagList, TagListItem } from '../utils/styles';
 
 export default class Index extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = {
-      backgroundImage: ''
-    };
-    this.handleBackgroundImage = this.handleBackgroundImage.bind(this);
-  }
-  handleBackgroundImage(evt) {
-    let backgroundImage = evt.target.getAttribute('data-bgImage');
-    this.setState({
-      backgroundImage
-    });
   }
   render() {
     const { edges: posts } = this.props.data.allMarkdownRemark;
     const totalPosts = posts.length;
     return (
  
-      <div className="home">
+      <PostsWrapper className="posts-wrapper">
         <PostsContainer className="posts-container">
           {posts
             .filter(post => post.node.frontmatter.title.length > 0)
@@ -40,26 +30,34 @@ export default class Index extends Component {
               });
               return (
                 <BlogPostWrapper className="blog-post-wrapper" key={`post-${index}`}>
+                  <BlogPostFeaturedImage className="blog-post-featured-image" backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}></BlogPostFeaturedImage>
+                  <BlogPostContent className="blog-post-content">
                   <h3>{`${totalPosts - index}`} &ndash;
                     <Link className="post-link" 
                     to={post.frontmatter.path}
-                    key={`link-${index}`}
-                    onMouseOver={this.handleBackgroundImage}
-                    data-bgImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}>
+                    key={`link-${index}`}>
                       {` ${post.frontmatter.title}`}
                     </Link>
                   </h3>
-                  <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
-                  <p className="post-excerpt" key={`excerpt-${index}`}>{post.excerpt}</p>
-                  <TagList className='tag-list'><span>Tags:</span>{tagItems}</TagList>
+                  <PostExcerpt className="post-excerpt" key={`excerpt-${index}`}>{post.excerpt}</PostExcerpt>
+                    <BlogPostDetails>
+                      <BlogPostDetailsInner>
+                    <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
+                    
+                    <CategoryDetail>Category: <span>
+                      <Link to={`/categories/${post.frontmatter.category}`}> 
+                        {post.frontmatter.category}
+                      </Link>
+                    </span></CategoryDetail> 
+                    <TagList className='tag-list'><span>Tags:</span>{tagItems}</TagList>
+                      </BlogPostDetailsInner>
+                    </BlogPostDetails>
+                  </BlogPostContent>
                 </BlogPostWrapper>
               );
             })}
-        </PostsContainer>
-        <ImageWrapper className='image-wrapper' backgroundImage={this.state.backgroundImage}>
-        </ImageWrapper>
-            
-      </div>
+        </PostsContainer>            
+      </PostsWrapper>
     );
   }
 }
@@ -69,13 +67,14 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 140)
           id
           frontmatter {
             title
             date(formatString: "MMM DD YYYY")
             path
             tags
+            category
             image {
               childImageSharp {
                 responsiveSizes {

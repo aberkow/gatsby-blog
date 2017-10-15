@@ -2,6 +2,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 
+import { BlogPostBuffer, BlogPostContainer, FeaturedImage } from '../utils/styles';
+
 export default function Template({
   data
 }) {
@@ -12,21 +14,26 @@ export default function Template({
     );
   });
   return (
-    <div className="blog-post-container">
+    <BlogPostContainer className="blog-post-container">
       <Helmet title={`AJB - ${post.frontmatter.title}`} />
-      <div className="blog-post">
-        <img src={post.frontmatter.image.childImageSharp.responsiveSizes.src} className='featured-image' />
-        <h1>{post.frontmatter.title}</h1>
-        <h2>By {post.frontmatter.author}</h2>
-        <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
-      <div className="meta-container">
-        <p>{post.frontmatter.category}</p>
-        <ul className="tag-list">
-          {tagsList}
-        </ul>
-      </div>
-    </div>
+      <BlogPostBuffer>
+        <div className="featured-image">
+          <FeaturedImage src={post.frontmatter.image.childImageSharp.responsiveSizes.src} className='featured-image' />
+        </div>
+
+        <div className="blog-post">
+          
+          <h1>{post.frontmatter.title}</h1>
+          <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
+        <div className="meta-container">
+          <p>{post.frontmatter.category}</p>
+          <ul className="tag-list">
+            {tagsList}
+          </ul>
+        </div>
+      </BlogPostBuffer>
+    </BlogPostContainer>
   );
 }
 
