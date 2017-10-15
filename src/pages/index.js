@@ -39,7 +39,9 @@ export default class Index extends Component {
                       {` ${post.frontmatter.title}`}
                     </Link>
                   </h3>
-                  <PostExcerpt className="post-excerpt" key={`excerpt-${index}`}>{post.excerpt}</PostExcerpt>
+                  <PostExcerpt className="post-excerpt" key={`excerpt-${index}`}>
+                    {post.excerpt}
+                  </PostExcerpt>
                     <BlogPostDetails>
                       <BlogPostDetailsInner>
                     <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>

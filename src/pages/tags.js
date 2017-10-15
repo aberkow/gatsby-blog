@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
+import { BlogPostBuffer, BlogPostContainer, TagList } from '../utils/styles';
 import { arrayReducer } from '../utils/helpers';
 
 export default function TagsPage({
@@ -18,7 +19,12 @@ export default function TagsPage({
   });
 
   return (
-    <ul className='tags-list'>{tagLinks}</ul>
+    <BlogPostContainer>
+      <BlogPostBuffer>
+        <h2>Tags</h2>
+        <TagList className='tags-list'>{tagLinks}</TagList>
+      </BlogPostBuffer>
+    </BlogPostContainer>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
-
+import { BlogPostBuffer, BlogPostContainer, TagList } from '../utils/styles';
 import { postsWithDataFilter } from '../utils/helpers';
 
 export default class TagRoute extends Component {
@@ -8,19 +8,23 @@ export default class TagRoute extends Component {
     const tagToFind = this.props.pathContext.tag;
     const posts = this.props.data.allMarkdownRemark.edges;
     const filteredPosts = postsWithDataFilter(posts, 'tags', tagToFind);
-
     const postLinks = filteredPosts.map((post, index) => {
       const tagsArray = post.node.frontmatter.tags;
       return (
         <li className='tag-list-item' key={`item-${index}`}>
-          <Link className='tag-list-link' to={post.node.frontmatter.path} key={`link-${index}`}>{post.node.frontmatter.title}</Link>
+          <Link className='tag-list-link' to={post.node.frontmatter.path} key={`link-${index}`}>
+            {post.node.frontmatter.title}
+          </Link>
         </li>
       )
     })
     return (
-      <div>
-        <ul className="tag-list">{postLinks}</ul>
-      </div>
+      <BlogPostContainer>
+        <BlogPostBuffer>
+          <h2>{filteredPosts.length} {filteredPosts.length > 1 ? 'posts' : 'post' } with the tag: {tagToFind}</h2>
+          <TagList className="tag-list">{postLinks}</TagList>
+        </BlogPostBuffer>
+      </BlogPostContainer>
     );
   }
 }

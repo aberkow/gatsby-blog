@@ -3,12 +3,11 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import { BlogPostBuffer, BlogPostContainer, FeaturedImage, TagList, TagListItem } from '../utils/styles';
+import { BlogPostBuffer, BlogPostContainer, FeaturedImage, PostMetaContainer, TagList, TagListItem } from '../utils/styles';
 
 export default function Template({
   data
 }) {
-  console.log(data);
   const { markdownRemark: post } = data;
   const tagsList = post.frontmatter.tags.map((tag, index) => {
     return (
@@ -30,10 +29,14 @@ export default function Template({
         <div className="blog-post">
           
           <h1>{post.frontmatter.title}</h1>
-          <em>{`Reading Time About ${post.timeToRead} ${post.timeToRead < 1 ? 'minutes' : 'minute' }`}</em>
+          <small>
+            <em>
+              {`Reading Time About ${post.timeToRead} ${post.timeToRead > 1 ? 'minutes' : 'minute' }`}
+            </em>
+            </small>
           <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
-        <div className="meta-container">
+        <PostMetaContainer className="meta-container">
           <p>
             <span>
               {`Category: `}
@@ -46,7 +49,7 @@ export default function Template({
             <span>Tags:</span>
             {tagsList}
           </TagList>
-        </div>
+        </PostMetaContainer>
       </BlogPostBuffer>
     </BlogPostContainer>
   );

@@ -7,7 +7,7 @@ module.exports = {
     position: relative;
     border: 1px solid #efefef;
     height: 600px;
-    margin: 0 40px;
+    margin: 20px 40px;
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
     transition: all .3s ease;
     &:hover {
@@ -65,7 +65,7 @@ module.exports = {
   ContentWrapper: styled.div`
     display: flex;
     max-width: 1220px;
-    margin: 20px auto 40px auto;
+    margin: 0px auto 40px auto;
     padding: 20px;
   `,
   MenuToggleText: styled.h2`
@@ -95,6 +95,10 @@ module.exports = {
   PostExcerpt: styled.p`
     ${media.phone`display: none;`}
   `,
+  PostMetaContainer: styled.div`
+    border-top: 1px solid #efefef;
+    padding-top: 30px;
+  `,
   PostsWrapper: styled.div`
     margin: 0 auto;
   `,
@@ -116,7 +120,7 @@ module.exports = {
     flex-grow: 1;
   `,
   MenuWrapper: styled.div`
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(127, 127, 127, 0.9);
     position: fixed;
     top: 0;
     right: 0;

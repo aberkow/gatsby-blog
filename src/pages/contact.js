@@ -3,11 +3,11 @@ import Link from 'gatsby-link';
 
 import { BlogPostBuffer, BlogPostContainer } from '../utils/styles';
 
-const About = () => 
+const Contact = () =>
   <BlogPostContainer>
     <BlogPostBuffer>
-      <h2>A little bit about me...</h2>
+      <h2>Let's talk!</h2>
     </BlogPostBuffer>
   </BlogPostContainer>
 
-export default About;
+export default Contact;
