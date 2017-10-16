@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import { BlogPostBuffer, BlogPostContainer, FeaturedImage, PostMetaContainer, TagList, TagListItem } from '../utils/styles';
+import { BlogPostBuffer, BlogPostContainer, BlogPostFeaturedImage, PostMetaContainer, SingleBlogPost, TagList, TagListItem } from '../utils/styles';
 
 export default function Template({
   data
@@ -21,12 +21,12 @@ export default function Template({
   return (
     <BlogPostContainer className="blog-post-container">
       <Helmet title={`AJB - ${post.frontmatter.title}`} />
-      <BlogPostBuffer>
-        <div className="featured-image">
-          <FeaturedImage src={post.frontmatter.image.childImageSharp.responsiveSizes.src} className='featured-image' />
-        </div>
+        <BlogPostFeaturedImage 
+          backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src} 
+          className="featured-image">
+        </BlogPostFeaturedImage>
 
-        <div className="blog-post">
+        <SingleBlogPost className="single-blog-post">
           
           <h1>{post.frontmatter.title}</h1>
           <small>
@@ -35,7 +35,7 @@ export default function Template({
             </em>
             </small>
           <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
-        </div>
+        </SingleBlogPost>
         <PostMetaContainer className="meta-container">
           <p>
             <span>
@@ -50,7 +50,7 @@ export default function Template({
             {tagsList}
           </TagList>
         </PostMetaContainer>
-      </BlogPostBuffer>
+      
     </BlogPostContainer>
   );
 }

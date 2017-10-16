@@ -3,11 +3,12 @@ import media from './media-query-sizes';
 
 module.exports = {
   BlogPostWrapper: styled.div`
-    flex: 1 1 50%;
+    display: block;
     position: relative;
     border: 1px solid #efefef;
-    height: 600px;
+    height: 720px;
     margin: 20px 40px;
+    max-width: 1020px;
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
     transition: all .3s ease;
     &:hover {
@@ -19,12 +20,9 @@ module.exports = {
     padding: 40px 30px;
   `,
   BlogPostContainer: styled.div`
-    width: 1140px;
-    margin: 0 80px;
+    width: 1020px;
+    margin: 20px auto;
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
-  `,
-  BlogPostBuffer: styled.div`
-    margin: 30px;
   `,
   BlogPostDetails: styled.div`
     position: absolute;
@@ -44,12 +42,10 @@ module.exports = {
     height: 200px;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
   `,
   CategoryDetail: styled.p`
     margin: 20px 0;
-  `,
-  FeaturedImage: styled.img`
-    width: 100%;
   `,
   HeaderWrapper: styled.div`
     display: flex;
@@ -87,7 +83,7 @@ module.exports = {
   `,
   PostsContainer: styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     max-width: 1220px;
     margin: 0 auto;
     ${media.tablet`flex-direction: column;`}
@@ -97,10 +93,14 @@ module.exports = {
   `,
   PostMetaContainer: styled.div`
     border-top: 1px solid #efefef;
+    margin: 30px;
     padding-top: 30px;
   `,
   PostsWrapper: styled.div`
     margin: 0 auto;
+  `,
+  SingleBlogPost: styled.div`
+    padding: 30px;
   `,
   SubTitleStyle: styled.h2`
     margin: 0;
