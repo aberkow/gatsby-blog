@@ -19,7 +19,10 @@ const TemplateWrapper = ({ children }) =>
       ]}
     />
     <style type="text/css">
-      {`
+      {`  
+          body {
+            background-color: #fafafa;
+          }
           body a {
             text-decoration: none;
             border-bottom: 2px solid transparent;
