@@ -1,13 +1,14 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-import { BlogPostBuffer, BlogPostContainer } from '../utils/styles';
+import { BlogPostContent, BlogPostContainer } from '../utils/styles';
 
 const About = () => 
   <BlogPostContainer>
-    <BlogPostBuffer>
+    <BlogPostContent>
       <h2>A little bit about me...</h2>
-    </BlogPostBuffer>
+    </BlogPostContent>
   </BlogPostContainer>
+  
 
 export default About;

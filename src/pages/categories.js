@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-import { BlogPostBuffer, BlogPostContainer, TagList } from '../utils/styles';
+import { BlogPostContent, BlogPostContainer, TagList } from '../utils/styles';
 import { arrayReducer } from '../utils/helpers.js';
 
 export default function TagsPage({
@@ -20,10 +20,10 @@ export default function TagsPage({
 
   return (
     <BlogPostContainer>
-      <BlogPostBuffer>
+      <BlogPostContent>
         <h2>Categories</h2>
         <TagList className='categories-list'>{categoryLinks}</TagList>
-      </BlogPostBuffer>
+      </BlogPostContent>
     </BlogPostContainer>
   );
 }

@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import { BlogPostBuffer, BlogPostContainer, BlogPostFeaturedImage, PostMetaContainer, SingleBlogPost, TagList, TagListItem } from '../utils/styles';
+import { BlogPostContent, BlogPostContainer, BlogPostFeaturedImage, PostMetaContainer, SingleBlogPost, TagList, TagListItem } from '../utils/styles';
 
 export default function Template({
   data

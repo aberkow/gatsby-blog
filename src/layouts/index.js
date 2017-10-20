@@ -27,16 +27,20 @@ const TemplateWrapper = ({ children }) =>
             text-decoration: none;
             border-bottom: 2px solid transparent;
             transition: all 0.4s ease-out;
-            color: blue;
+            color: cornflowerblue;
           }
-          body a:hover {
+          
+          body a:hover,
+          body a:active,
+          body a:visited:hover {
             border-bottom: 2px solid;
             transition: all 0.4s ease-out;
-            color: green;
+            color: orangered;
           }
           body a:visited {
-            color: red;
+            color: cadetblue;
           }
+
           code {
             background-color: #272822;
             color: #f8f8f2;
