@@ -7,20 +7,20 @@ module.exports = {
     position: relative;
     border: 1px solid #efefef;
     height: 720px;
-    margin: 20px 40px;
+    margin: 20px auto;
     max-width: 1020px;
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
     transition: all .3s ease;
     &:hover {
       box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     }
-    ${media.tablet`margin: 40px;`}
   `,
   BlogPostContent: styled.div`
     padding: 40px 30px;
   `,
   BlogPostContainer: styled.div`
-    width: 1020px;
+    display: block;
+    max-width: 1020px;
     margin: 20px auto;
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
   `,
@@ -59,19 +59,21 @@ module.exports = {
     margin-left: 60px;
   `,
   ContentWrapper: styled.div`
-    display: flex;
+    display: block;
     max-width: 1220px;
     margin: 0px auto 40px auto;
     padding: 20px;
   `,
   MenuToggleText: styled.h2`
     border-bottom: 2px solid transparent;
+    color: cornflowerblue;
     margin-right: 60px;
     position: relative;
     transition: all 0.4s ease-out;
     z-index: 1000;
     &:hover {
       border-bottom: 2px solid;
+      color: orangered;
       cursor: pointer;
       transition: all 0.4s ease-out;
     }
@@ -82,11 +84,9 @@ module.exports = {
     `}
   `,
   PostsContainer: styled.div`
-    display: flex;
-    flex-direction: column;
+    display: block;
     max-width: 1220px;
     margin: 0 auto;
-    ${media.tablet`flex-direction: column;`}
     `,
   PostExcerpt: styled.p`
     ${media.phone`display: none;`}
@@ -120,7 +120,7 @@ module.exports = {
     flex-grow: 1;
   `,
   MenuWrapper: styled.div`
-    background-color: rgba(127, 127, 127, 0.9);
+    background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     top: 0;
     right: 0;

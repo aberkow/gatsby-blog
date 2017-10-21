@@ -21,21 +21,18 @@ export default function Template({
   return (
     <BlogPostContainer className="blog-post-container">
       <Helmet title={`AJB - ${post.frontmatter.title}`} />
-        <BlogPostFeaturedImage 
-          backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src} 
-          className="featured-image">
-        </BlogPostFeaturedImage>
-
-        <SingleBlogPost className="single-blog-post">
-          
+      <BlogPostFeaturedImage 
+        backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src} 
+        className="featured-image">
+      </BlogPostFeaturedImage>
+      <BlogPostContent className="blog-post-content">
           <h1>{post.frontmatter.title}</h1>
           <small>
             <em>
-              {`Reading Time About ${post.timeToRead} ${post.timeToRead > 1 ? 'minutes' : 'minute' }`}
+              {`Reading Time - About ${post.timeToRead} ${post.timeToRead > 1 ? 'Minutes' : 'Minute' }`}
             </em>
             </small>
-          <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
-        </SingleBlogPost>
+          <div className="blog-post-text" dangerouslySetInnerHTML={{ __html: post.html }} />
         <PostMetaContainer className="meta-container">
           <p>
             <span>
@@ -50,7 +47,7 @@ export default function Template({
             {tagsList}
           </TagList>
         </PostMetaContainer>
-      
+      </BlogPostContent>
     </BlogPostContainer>
   );
 }
