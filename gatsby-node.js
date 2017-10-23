@@ -65,7 +65,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       });
     });
     tagsArray.forEach((tag) => {
-      const test = createPage({
+      createPage({
         path: `/tags/${tag}`,
         component: tagTemplate,
         context: {

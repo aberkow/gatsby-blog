@@ -7,6 +7,8 @@ tags:
   - javascript
   - functional programming
   - etude
+  - array methods
+  - string methods
 author: "Adam"
 category: "javascript"
 ---
