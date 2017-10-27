@@ -14,7 +14,8 @@
     "gatsby-remark-prismjs": "^1.2.8",
     "gatsby-source-filesystem": "^1.5.1",
     "gatsby-transformer-remark": "^1.7.15",
-    "gatsby-transformer-sharp": "^1.6.8"
+    "gatsby-transformer-sharp": "^1.6.8",
+    "write-good": "^0.11.3"
   },
   "keywords": [
     "gatsby"
