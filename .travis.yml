@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "8"
+before_script:
+  - "npm install -g gatsby-cli@1.0.9"
+install:
+  - yarn
+script:
+  - gatsby build
+after_success: "lftp ftp://${USER_NAME}:${PASSWORD}@${SERVER_ADDRESS}/public_html/ -e 'mirror -R'"
+cache:
+  directories:
+    - "node_modules"
