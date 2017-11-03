@@ -7,7 +7,8 @@ install:
   - yarn
 script:
   - gatsby build
-after_success: "lftp ftp://${USER_NAME}:${PASSWORD}@${SERVER_ADDRESS}/public_html/ -e 'mirror -R'"
+after_success: "lftp -c 'open -u ${USER_NAME},${PASSWORD} ftp://${SERVER_ADDRESS}; mirror -R ~/public/ /public_html/'"
+#after_success: "lftp ftp://${USER_NAME}:${PASSWORD}@${SERVER_ADDRESS}/public_html/ -e 'mirror -R'"
 cache:
   directories:
     - "node_modules"
