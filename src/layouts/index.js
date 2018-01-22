@@ -24,8 +24,7 @@ const TemplateWrapper = ({ children }) =>
             background-color: #fafafa;
           }
           body a {
-            text-decoration: none;
-            border-bottom: 2px solid transparent;
+            text-decoration-skip: ink;
             transition: all 0.4s ease-out;
             color: cornflowerblue;
           }
@@ -33,12 +32,10 @@ const TemplateWrapper = ({ children }) =>
           body a:hover,
           body a:active,
           body a:visited:hover {
-            border-bottom: 2px solid;
-            transition: all 0.4s ease-out;
             color: orangered;
           }
           body a:visited {
-            color: cadetblue;
+            color: cornflowerblue;
           }
 
           code {
