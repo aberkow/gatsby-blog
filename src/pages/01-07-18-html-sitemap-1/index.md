@@ -1,7 +1,7 @@
 ---
 path: "/wordpress-html-sitemap-plugin-1"
 date: "2018-01-04"
-title: "Building a Wordpress HTML Sitemap Plugin (pt. 1)"
+title: "Building a Wordpress HTML Sitemap Plugin"
 image: ./assets/featured-image.jpg
 tags:
   - wordpress
@@ -27,31 +27,31 @@ We need three functions to make this plugin work correctly.
 - A way to enqueue the styles for the plugin
 
 ### Function 1 - Page List Generator
-Even though this is a fairly simple function, it's more complicated than the others. In the end, we want it to return all the markup necessary for the list. Let's sketch out the function like this.
+This function needs to return all the markup necessary for the list. Sometimes I like to work backwards, so this is a sketch of what should happen by the end.
 ```php
 function page_list_generator() {
-
+  // generate a list of pages here...
   $page_list = "<ul id='sitemap-list'>$pages</ul>";
   return $page_list;
 }
 ```
 Here we can see that by the end the function will create an unordered list with some `$pages` and then return the complete list. Next, we need a way to create the pages.
 
-Wordpress has two ways (at least) to generate the list of pages we need. One way is with the `wp_list_pages()` function and the other is by using the `Walker_Page()` class. I'll show both, but I like the `wp_list_pages()` method a little better. 
+Wordpress has two ways (at least) to generate the list of pages we need. One way is with the [`wp_list_pages()`](https://developer.wordpress.org/reference/functions/wp_list_pages/) function and the other is by using the [`Walker_Page()`](https://codex.wordpress.org/Class_Reference/Walker_Page) class. I'll show both, but I like the `wp_list_pages()` method a little better. 
 
-Both functions will basically do the same thing.
+By the end, both functions will basically do the same things:
 
 - Get a list of all published pages (except the page the shortcode is on).
 - Walk over all the pages in the list
 - Add those pages as `<li>` elements with links to the pages
 
 #### wp_list_pages method
-This way of generating the list is really nice. `wp_list_pages()` takes an array of arguments. The only thing that I needed to remember to do was to set the `'echo'` key to `false` and the `title_li` to an empty string.  Why? Because otherwise, the function generates its own markup in a slightly weird way. Let me show you! This is (sort of) what the markup looks like.
+This way of generating the list is really nice. `wp_list_pages()` takes an array of arguments. The only thing that I needed to remember to do was to set the `'echo'` key to `false` and the `title_li` to an empty string. Why? Because otherwise, the function generates and displays its own markup in a slightly weird way. Let me show you! This is (sort of) what the markup looks like.
 ```html
 <li>The Title</li>
-<ul>
-<!-- A list of pages in <li>'s-->
-</ul>
+  <ul>
+  <!-- A list of pages in <li>'s-->
+  </ul>
 ```
 So I wrote the function like this...
 ```php
@@ -75,7 +75,7 @@ So we'll take a different approach now using a combination of `get_pages()` and 
 
 To do it, first get a list of the pages with the built in function WordPress function `get_pages()`. All we have to do is pass an array as an arguments again and it will return the pages we request. This time though it won't try to display them like `wp_list_pages()` does.
 
-Then, the `Walker_Page` class has a method called `walk()` (shocking I know). It takes two arguments, the list of pages to walk over and a depth (how far into the tree to walk). From there the rest of the function is the same. 
+Then, the `Walker_Page` class has a method called `walk()` (shocking I know). It takes two arguments, the list of pages to walk over and a depth (how far into the tree of pages to go). From there the rest of the function is the same. 
 ```php
 function page_list_generator() {
   $current_page = (string)get_the_ID();
@@ -93,11 +93,11 @@ function page_list_generator() {
 }
 ``` 
 #### Transient Caching
-We're not quite done yet though. Supposing we have a very large list of pages we might not want to recreate the entire list everytime someone visits the page. To prevent this, we can use the [Wordpress transient API](https://codex.wordpress.org/Transients_API).
+We're not quite done yet though. Suppose we have a very large list of pages we might not want to recreate the entire list everytime someone visits the page. To prevent this, we can use the [Wordpress transient API](https://codex.wordpress.org/Transients_API).
 
 >[The Wordpress Transient API] offers a simple and standardized way of storing cached data in the database temporarily by giving it a custom name and a timeframe after which it will expire and be deleted.
 
-There are basically three functions in this API `get_transient()`, `set_transient()`, and `delete_transient()`. 
+There are basically three functions in this API [`get_transient()`](https://codex.wordpress.org/Function_Reference/get_transient), [`set_transient()`](https://codex.wordpress.org/Function_Reference/set_transient), and [`delete_transient()`](https://codex.wordpress.org/Function_Reference/delete_transient). 
 
 To use this API effectively, we'll need to do two things
 - Create a unique name to store the data in the database
@@ -107,7 +107,7 @@ To use this API effectively, we'll need to do two things
 
 This gets a bit tricky and honestly it took me a while to figure out a way to do this that wasn't completely ridiculous.
 
-To use transient caching, the first thing to do is create a unique name as a key to store in the `wp_options` part of the database. The PHP `md5()` function is nice for this since it will create a hash of any string.
+To use transient caching, the first thing to do is create a unique name as a key to store in the [`wp_options`](https://codex.wordpress.org/Database_Description#Table:_wp_options) part of the database. [The PHP `md5()` function](http://php.net/manual/en/function.md5.php) is nice for this since it will create a hash of any string.
 
 ```php
 function page_list_generator() {
@@ -165,9 +165,9 @@ function page_list_generator() {
 ```
 Phew! So much for the first function!
 ### Function 2 - The Shortcode Handler
-This function is really straightforward compared to the last one. It will be used as the callback function inside the Wordpress `add_shortcode()` function. All it has to do is `echo` the results from the first function.
+This function is really straightforward compared to the last one. It will be used as the callback function inside the Wordpress [`add_shortcode()` function](https://codex.wordpress.org/Function_Reference/add_shortcode). All it has to do is `echo` the results from the first function.
 
-One important thing to remember when using shortcodes is to make sure to add output buffering inside the callback. If you don't, the shortcode markup can be placed at the wrong point in the page markup. This is especially a problem when using page builders.
+One important thing to remember when using shortcodes is to [make sure to add output buffering](http://php.net/manual/en/book.outcontrol.php) inside the callback. If you don't, the shortcode markup will show up at the wrong point in the page markup. This is especially a problem when using page builders.
 ```php
 function sitemap_shortcode_handler() {
   ob_start();
@@ -177,7 +177,7 @@ function sitemap_shortcode_handler() {
 add_shortcode('sitemap', 'sitemap_shortcode_handler');
 ```
 ### Function 3 - Enqueueing the Stylesheet.
-This plugin comes with a very small stylesheet. Really it's just enough to override the browser defaults for lists. The rest of the styles (links, colors, etc...) are left up to the theme. That way I could add the plugin to lots of themes without worrying too much. Here's the function. One thing to be careful of in Wordpress development is that you can accidentally add a lot of stylesheets and script calls to the DOM without meaning to. In this case I wanted to make sure that the stylesheet was added _only_ if the shortcode was present on the page. Fortunately, Wordpress has the `has_shortcode()` function that can check exactly that.
+This plugin comes with a very small stylesheet. Really it's just enough to override the browser defaults for lists. The rest of the styles (links, colors, etc...) are left up to the theme. That way I could add the plugin to lots of themes without worrying too much. Here's the function. One thing to be careful of in Wordpress development is that you can accidentally add a lot of stylesheets and script calls to the DOM without meaning to. In this case I wanted to make sure that the stylesheet was added _only_ if the shortcode was present on the page. Fortunately, [Wordpress has the `has_shortcode()` function](https://codex.wordpress.org/Function_Reference/has_shortcode) that can check exactly that.
 ```php
 function sitemap_styles() {
 	if (has_shortcode($post->post_content, 'sitemap')) {
@@ -202,3 +202,4 @@ For reference, here are the AMAZING STYLES!
   margin-left: 30px;
 }
 ```
+I hope this post helps people looking to learn more about Wordpress plugin development!
