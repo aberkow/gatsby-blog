@@ -1,6 +1,6 @@
 ---
 path: "/programming-concepts-part-1-scope"
-date: "2018-01-22"
+date: "2018-01-28"
 title: "Scope"
 image: ./assets/featured-image.jpg
 tags:
