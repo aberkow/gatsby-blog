@@ -14,8 +14,8 @@ const TemplateWrapper = ({ children }) =>
     <Helmet
       title="Adam J Berkowitz"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'description', content: 'Web development blog and personal site for Adam Berkowitz' },
+        { name: 'keywords', content: 'web development, blog, javascript, php, wordpress, tutorials, html, css, docker' },
       ]}
     />
     <style type="text/css">
