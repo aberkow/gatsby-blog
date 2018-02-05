@@ -3,16 +3,13 @@ import media from './media-query-sizes';
 
 module.exports = {
   BlogPostWrapper: styled.div`
-    display: block;
+  border: 1px solid;
     position: relative;
-    border: 1px solid #efefef;
-    height: 720px;
-    margin: 20px auto;
-    max-width: 1020px;
-    box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
-    transition: all .3s ease;
+    transition: all 0.4s ease-out;
     &:hover {
-      box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
+      background-color: rgba(0,0,0,0.85);
+      color: #fafafa;
+      transition: all 0.4s ease-out;
     }
   `,
   BlogPostContent: styled.div`
@@ -25,14 +22,12 @@ module.exports = {
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
   `,
   BlogPostDetails: styled.div`
-    position: absolute;
     width: 100%;
     bottom: 0;
     left: 0;
   `,
   BlogPostDetailsInner: styled.div`
     border-top: 1px solid #efefef;
-    margin: 0 30px;
     padding: 30px 0;
   `,
   BlogPostFeaturedImage: styled.div`
@@ -55,7 +50,8 @@ module.exports = {
     padding: 0;
     justify-content: space-between;
   `,
-  HeaderTitle: styled.h1`
+  HeaderTitle: styled.span`
+    font-size: 2em;
     margin-left: 60px;
   `,
   ContentWrapper: styled.div`
@@ -84,7 +80,9 @@ module.exports = {
     `}
   `,
   PostsContainer: styled.div`
-    display: block;
+    display: grid;
+    grid-template: auto / repeat(auto-fit, minmax(12rem, 1fr));
+    grid-gap: 1em;
     max-width: 1220px;
     margin: 0 auto;
     `,
@@ -95,6 +93,10 @@ module.exports = {
     border-top: 1px solid #efefef;
     margin: 30px;
     padding-top: 30px;
+  `,
+  PostTitle: styled.h2`
+    line-height: 1.4;
+    word-wrap: initial;
   `,
   PostsWrapper: styled.div`
     margin: 0 auto;
