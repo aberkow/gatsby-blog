@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import MetaContainer from '../layouts/MetaContainer/metacontainer';
-import { BlogPostContent, BlogPostDetails, BlogPostDetailsInner, BlogPostFeaturedImage, BlogPostWrapper, CategoryDetail, PostsContainer, PostExcerpt, PostsWrapper, TagList, TagListItem } from '../utils/styles';
+import { BlogPostContent, BlogPostDetails, BlogPostDetailsInner, BlogPostFeaturedImage, BlogPostWrapper, CategoryDetail, PostsContainer, PostExcerpt, PostTitle, PostsWrapper, TagList, TagListItem } from '../utils/styles';
 
 export default class Index extends Component {
   constructor(props) {
@@ -30,15 +30,24 @@ export default class Index extends Component {
               });
               return (
                 <BlogPostWrapper className="blog-post-wrapper" key={`post-${index}`}>
-                  <BlogPostFeaturedImage className="blog-post-featured-image" backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}></BlogPostFeaturedImage>
+                  <Link className="post-link"
+                    to={post.frontmatter.path}
+                    key={`link-${index}`} >
+                    <BlogPostFeaturedImage 
+                      className="blog-post-featured-image" 
+                      backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}
+                      alt={`Featured Image for ${post.frontmatter.title}`}
+                      >
+                    </BlogPostFeaturedImage>
+                  </Link>
                   <BlogPostContent className="blog-post-content">
-                  <h3>{`${totalPosts - index}`} &ndash;
+                  <PostTitle>{`${totalPosts - index}`} &ndash;
                     <Link className="post-link" 
                     to={post.frontmatter.path}
                     key={`link-${index}`}>
                       {` ${post.frontmatter.title}`}
                     </Link>
-                  </h3>
+                  </PostTitle>
                   <PostExcerpt className="post-excerpt" key={`excerpt-${index}`}>
                     {post.excerpt}
                   </PostExcerpt>
