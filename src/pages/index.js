@@ -11,8 +11,8 @@ export default class Index extends Component {
   render() {
     const { edges: posts } = this.props.data.allMarkdownRemark;
     const totalPosts = posts.length;
+    console.log(posts)
     return (
- 
       <PostsWrapper className="posts-wrapper">
         <PostsContainer className="posts-container">
           {posts
