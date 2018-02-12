@@ -2,7 +2,8 @@
 path: "/programming-concepts-part-0"
 date: "2018-01-22"
 title: "Programming Concepts Part 0"
-image: ./assets/featured-image.jpg
+image: ../../images/zero.jpg
+alt: "The number zero painted in black on a ceramic tile hung on a wooden wall"
 tags:
   - fundamentals
   - concepts

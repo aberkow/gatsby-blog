@@ -21,14 +21,17 @@ export default function Template({
   return (
     <BlogPostContainer className="blog-post-container">
       <Helmet title={`AJB - ${post.frontmatter.title}`} />
-      <Img sizes={post.frontmatter.image.childImageSharp.sizes} />
+      <Img 
+        sizes={post.frontmatter.image.childImageSharp.sizes} 
+        alt={post.frontmatter.alt}
+      />
       <BlogPostContent className="blog-post-content">
           <h1>{post.frontmatter.title}</h1>
           <small>
             <em>
               {`Reading Time - About ${post.timeToRead} ${post.timeToRead > 1 ? 'Minutes' : 'Minute' }`}
             </em>
-            </small>
+          </small>
           <div className="blog-post-text" dangerouslySetInnerHTML={{ __html: post.html }} />
         <PostMetaContainer className="meta-container">
           <p>
@@ -61,6 +64,7 @@ export const pageQuery = graphql`
         tags
         author
         category
+        alt
         image {
           childImageSharp {
             sizes {

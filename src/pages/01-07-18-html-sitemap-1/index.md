@@ -2,7 +2,8 @@
 path: "/wordpress-html-sitemap-plugin-1"
 date: "2018-01-04"
 title: "Building a Wordpress HTML Sitemap Plugin"
-image: ./assets/featured-image.jpg
+image: ../../images/maps.jpg
+alt: "Many antique maps in a pile"
 tags:
   - wordpress
   - plugins

@@ -36,7 +36,7 @@ export default class Index extends Component {
                     <Img
                       sizes={post.frontmatter.image.childImageSharp.sizes}
                       className="blog-post-featured-image" 
-                      alt={`Featured Image for ${post.frontmatter.title}`}
+                      alt={post.frontmatter.alt}
                     />
                   </Link>
                   <BlogPostContent className="blog-post-content">
@@ -85,6 +85,7 @@ export const pageQuery = graphql`
             path
             tags
             category
+            alt
             image {
               childImageSharp {
                 sizes {
