@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import MetaContainer from '../layouts/MetaContainer/metacontainer';
-import { BlogPostContent, BlogPostDetails, BlogPostDetailsInner, BlogPostFeaturedImage, BlogPostWrapper, CategoryDetail, PostsContainer, PostExcerpt, PostTitle, PostsWrapper, TagList, TagListItem } from '../utils/styles';
+import { BlogPostContent, BlogPostDetails, BlogPostDetailsInner, BlogPostWrapper, CategoryDetail, PostsContainer, PostExcerpt, PostTitle, PostsWrapper, TagList, TagListItem } from '../utils/styles';
 
 export default class Index extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ export default class Index extends Component {
   render() {
     const { edges: posts } = this.props.data.allMarkdownRemark;
     const totalPosts = posts.length;
-    console.log(posts)
     return (
       <PostsWrapper className="posts-wrapper">
         <PostsContainer className="posts-container">
@@ -33,12 +33,11 @@ export default class Index extends Component {
                   <Link className="post-link"
                     to={post.frontmatter.path}
                     key={`link-${index}`} >
-                    <BlogPostFeaturedImage 
+                    <Img
+                      sizes={post.frontmatter.image.childImageSharp.sizes}
                       className="blog-post-featured-image" 
-                      backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src}
                       alt={`Featured Image for ${post.frontmatter.title}`}
-                      >
-                    </BlogPostFeaturedImage>
+                    />
                   </Link>
                   <BlogPostContent className="blog-post-content">
                   <PostTitle>{`${totalPosts - index}`} &ndash;
@@ -88,8 +87,17 @@ export const pageQuery = graphql`
             category
             image {
               childImageSharp {
-                responsiveSizes {
+                sizes {
+                  base64
+                  tracedSVG
+                  aspectRatio
                   src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                  originalImg
+                  originalName
                 }
               }
             }
@@ -99,38 +107,6 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-
-// export default function Index({ data }) {
-//   const { edges: posts } = data.allMarkdownRemark;
-//   return (
-//     <div className="home">
-//       <div className="blog-posts">
-//         {posts
-//           .filter(post => post.node.frontmatter.title.length > 0)
-//           .map(({ node: post }) => {
-//             return (
-//               <div>
-//                 <h1>
-//                   <Link className="post-link" to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-//                 </h1>
-//                 <h2>{post.frontmatter.date}</h2>
-//                 <em>By {post.frontmatter.author}</em>
-//                 <p>{post.excerpt}</p>
-//               </div>
-//             );
-//           })}
-//       </div>
-//     </div>
-//   )
-// }
-
-// {/* <BlogPostWrapper
-//   backgroundImage={post.frontmatter.image.childImageSharp.original.src} className="blog-post-preview"
-//   key={post.id}>
-//   {/* <img src={post.frontmatter.image.childImageSharp.original.src} /> */}
-
-// </BlogPostWrapper> */}
 
 
 
