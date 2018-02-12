@@ -2,7 +2,8 @@
 path: "/the-quick-brown-fox"
 date: "2017-09-15"
 title: "THE qck brn FOX!"
-image: ./assets/featured-image.jpg
+image: ../../images/fox.jpg
+alt: "A red fox standing on snow and looking at the photographer"
 tags:
   - javscript
   - functional programming

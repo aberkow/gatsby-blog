@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import { BlogPostContent, BlogPostContainer, BlogPostFeaturedImage, PostMetaContainer, SingleBlogPost, TagList, TagListItem } from '../utils/styles';
+import { BlogPostContent, BlogPostContainer, PostMetaContainer, SingleBlogPost, TagList, TagListItem } from '../utils/styles';
 
 export default function Template({
   data
@@ -21,17 +21,17 @@ export default function Template({
   return (
     <BlogPostContainer className="blog-post-container">
       <Helmet title={`AJB - ${post.frontmatter.title}`} />
-      <BlogPostFeaturedImage 
-        backgroundImage={post.frontmatter.image.childImageSharp.responsiveSizes.src} 
-        className="featured-image">
-      </BlogPostFeaturedImage>
+      <Img 
+        sizes={post.frontmatter.image.childImageSharp.sizes} 
+        alt={post.frontmatter.alt}
+      />
       <BlogPostContent className="blog-post-content">
           <h1>{post.frontmatter.title}</h1>
           <small>
             <em>
               {`Reading Time - About ${post.timeToRead} ${post.timeToRead > 1 ? 'Minutes' : 'Minute' }`}
             </em>
-            </small>
+          </small>
           <div className="blog-post-text" dangerouslySetInnerHTML={{ __html: post.html }} />
         <PostMetaContainer className="meta-container">
           <p>
@@ -64,10 +64,20 @@ export const pageQuery = graphql`
         tags
         author
         category
+        alt
         image {
           childImageSharp {
-            responsiveSizes {
+            sizes {
+              base64
+              tracedSVG
+              aspectRatio
               src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+              originalImg
+              originalName
             }
           }
         }

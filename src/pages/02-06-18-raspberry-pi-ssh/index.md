@@ -2,7 +2,8 @@
 path: "/learn-to-ssh"
 date: "2018-02-08"
 title: "Learn to SSH"
-image: ./assets/featured-image.jpg
+image: ../../images/lock-and-gate.jpg
+alt: "A rusty green metal gate secured with an old metal chain and bronze padlock"
 tags:
   - fundamentals
   - ssh

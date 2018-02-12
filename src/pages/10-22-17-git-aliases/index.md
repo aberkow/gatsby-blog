@@ -2,7 +2,8 @@
 path: "/git-aliases"
 date: "2017-10-22"
 title: "Quick Aliases for git"
-image: ./assets/featured-image.jpg
+image: ../../images/analog-clock.jpg
+alt: "Black and white analog clock to represent the time saved by using these shortcuts"
 tags:
   - git
   - gitflow

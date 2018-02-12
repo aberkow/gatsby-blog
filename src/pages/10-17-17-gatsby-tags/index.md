@@ -2,7 +2,8 @@
 path: "/tags-and-categories-in-gatsby-js"
 date: "2017-10-17"
 title: "Using Tags and Categories in Gatsby.js"
-image: ./assets/featured-image.jpg
+image: ../../images/graphql-code.jpg
+alt: "Screenshot of a graphql query from this blog"
 tags:
   - javscript
   - functional programming
