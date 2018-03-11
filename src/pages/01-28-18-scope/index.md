@@ -2,7 +2,8 @@
 path: "/programming-concepts-part-1-scope"
 date: "2018-01-28"
 title: "Scope"
-image: ./assets/featured-image.jpg
+image: ../../images/telescope.jpg
+alt: "A silver telescope on top of a tripod aimed out a large plate glass window"
 tags:
   - fundamentals
   - programming concepts

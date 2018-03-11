@@ -2,7 +2,8 @@
 path: "/backwards-and-forwards"
 date: "2017-10-15"
 title: "Backwards and Forwards (or  —  Palindrome checker)"
-image: ./assets/featured-image.jpg
+image: ../../images/rainbow-laptop.jpg
+alt: "A laptop keyboard overlaid with a rainbow colored filter"
 tags:
   - javascript
   - functional programming
