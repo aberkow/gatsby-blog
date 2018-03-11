@@ -81,7 +81,7 @@ module.exports = {
   `,
   PostsContainer: styled.div`
     display: grid;
-    grid-template: auto / repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template: auto / repeat(auto-fit, minmax(14rem, 1fr));
     grid-gap: 1em;
     max-width: 1220px;
     margin: 0 auto;
