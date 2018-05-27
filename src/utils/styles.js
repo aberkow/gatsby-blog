@@ -6,7 +6,8 @@ module.exports = {
   border: 1px solid;
     position: relative;
     transition: all 0.4s ease-out;
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: rgba(0,0,0,0.85);
       color: #fafafa;
       transition: all 0.4s ease-out;
@@ -41,6 +42,35 @@ module.exports = {
   `,
   CategoryDetail: styled.p`
     margin: 20px 0;
+  `,
+  FormButton: styled.button`
+    border: 1px solid cornflowerblue;
+    background-color: cornflowerblue;
+    padding: 0.5em 2em;
+    color: black;
+    &:hover,
+    &:focus {
+      background-color: white;
+      border: 1px solid orangered;
+      box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
+      color: orangered;
+    }
+  `,
+  FormInputContainer: styled.div`
+    margin-bottom: 1em;
+    padding: 0.5em 0;
+  `,
+  FormInput: styled.input`
+    background-color: #f0f1f3;
+    border: none;
+    display: block;
+    padding: 0.5em;
+  `,
+  FormTextArea: styled.textarea `
+    background-color: #f0f1f3;
+    border: none;
+    display: block;
+    padding: 0.5em;
   `,
   HeaderWrapper: styled.div`
     display: flex;
