@@ -2,7 +2,7 @@
 path: "/functions-part-3"
 date: "2018-05-27"
 title: "Functions Part 3"
-image: ../../images/hooks.jpg
+image: ../../images/hooks-0.jpg
 alt: "Carabiners and climbing gear in a pile on a grey rock-like surface."
 tags:
   - fundamentals
