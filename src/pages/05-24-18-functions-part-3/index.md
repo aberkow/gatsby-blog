@@ -1,9 +1,9 @@
 ---
 path: "/functions-part-3"
-date: "2018-05-14"
+date: "2018-05-27"
 title: "Functions Part 3"
-image: ../../images/coffee-two.jpg
-alt: "Coffee beans arranged into a square with four quadrants. Each quadrant has a different color roast."
+image: ../../images/hooks.jpg
+alt: "Carabiners and climbing gear in a pile on a grey rock-like surface."
 tags:
   - fundamentals
   - concepts
@@ -14,7 +14,7 @@ category: "programming concepts"
 ---
 This is part 3 of a series on functions. When I was first starting to learn web development, there were some aspects of functions that were confusing to me. Fortunately, after a lot of practice I'm not (quite) as confused as before! Progress!
 
-In this post I want to take a brief look at WordPress action hooks and filters as they relate to callback functions. If you're coming here and are confused by callback functions in general, that's ok. You might want to take a little time to [read part 2 of this series which deals with callback functions](/functions-part-2).
+In this post I want to take a brief look at WordPress action hooks as they relate to callback functions. If you're coming here and are confused by callback functions in general, that's ok. You might want to take a little time to [read part 2 of this series which deals with callback functions](/functions-part-2).
 
 ## WordPress Hooks.
 In WordPress hooks are 
