@@ -58,7 +58,6 @@ export const pageQuery = graphql`
       html
       timeToRead
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         path
         title
         tags
