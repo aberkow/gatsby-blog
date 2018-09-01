@@ -3,29 +3,27 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import { BlogPostContent, BlogPostContainer, PostMetaContainer, SingleBlogPost, TagList, TagListItem } from '../utils/styles';
-
 export default function Template({
   data
 }) {
   const { markdownRemark: post } = data;
   const tagsList = post.frontmatter.tags.map((tag, index) => {
     return (
-      <TagListItem key={index}>
+      <li key={index}>
         <Link to={`/tags/${tag}`}>
           {tag}
         </Link>
-      </TagListItem>
+      </li>
     );
   });
   return (
-    <BlogPostContainer className="blog-post-container">
+    <div className="blog-post-container">
       <Helmet title={`AJB - ${post.frontmatter.title}`} />
       <Img 
         sizes={post.frontmatter.image.childImageSharp.sizes} 
         alt={post.frontmatter.alt}
       />
-      <BlogPostContent className="blog-post-content">
+      <div className="blog-post-content">
           <h1>{post.frontmatter.title}</h1>
           <small>
             <em>
@@ -33,7 +31,7 @@ export default function Template({
             </em>
           </small>
           <div className="blog-post-text" dangerouslySetInnerHTML={{ __html: post.html }} />
-        <PostMetaContainer className="meta-container">
+        <div className="meta-container">
           <p>
             <span>
               {`Category: `}
@@ -42,13 +40,13 @@ export default function Template({
               {post.frontmatter.category}
             </Link>
           </p>
-          <TagList className="tag-list">
+          <ul className="tag-list">
             <span>Tags:</span>
             {tagsList}
-          </TagList>
-        </PostMetaContainer>
-      </BlogPostContent>
-    </BlogPostContainer>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 

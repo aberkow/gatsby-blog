@@ -8,6 +8,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
