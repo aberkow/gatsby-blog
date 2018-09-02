@@ -11,15 +11,33 @@ header {
 }
 
 .site-wrapper {
-  max-width: 55em;
+  display: grid;
+  grid-template-columns: 12.5em repeat(auto-fit, minmax(12.5em, 1fr));
+  max-width: 75em;
   margin: 0 auto;
   padding: 1em
 }
 
+#main-nav {
+  grid-column: 1 / 2;
+}
+
+.menu-list {
+  list-style-type: none;
+  margin: 0;
+  position: fixed;
+  top: 10em;
+}
+
+.header-wrapper,
+.content-wrapper {
+  grid-column: 2 / 4;
+}
+
 .posts-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  grid-gap: 3em;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  grid-gap: 2em;
 }
 
 .card-wrapper {
@@ -36,7 +54,7 @@ header {
 }
 
 .blog-post-container {
-  margin: 0 auto;
+  margin: 0 auto 0 0;
   max-width: 45em;
 }
 

@@ -3,10 +3,16 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome, faAt, faUser } from '@fortawesome/free-solid-svg-icons';
+
 import Header from '../layouts/Header/header';
+import Navigation from '../layouts/Navigation/Navigation';
 
 import '../sass/styles.scss'
 require('prismjs/themes/prism-okaidia.css');
+
+library.add(faHome, faAt, faUser);
 
 const TemplateWrapper = ({ children }) =>
   <div className='site-wrapper'>
@@ -50,12 +56,8 @@ const TemplateWrapper = ({ children }) =>
       `}
     </style> */}
     <Header />
+    <Navigation />
     <main className="content-wrapper">
-      <ul>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-      </ul>
       {children()}
     </main>
   </div>

@@ -1,5 +1,6 @@
 import Link from 'gatsby-link';
 import React, { Component } from 'react';
+
 import Menu from './menu';
 
 export default class Header extends Component {
@@ -25,10 +26,10 @@ export default class Header extends Component {
             Adam J Berkowitz
           </Link>
         </span>
-        <Menu 
+        {/* <Menu 
           isMenuOpen={this.state.isMenuOpen} 
           menuDisplay={this.state.menuDisplay} 
-          onClick={this.menuHandler} />
+          onClick={this.menuHandler} /> */}
         
       </header>
     );

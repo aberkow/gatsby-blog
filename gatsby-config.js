@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-next`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
