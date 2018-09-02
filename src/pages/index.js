@@ -12,59 +12,57 @@ export default class Index extends Component {
     const totalPosts = posts.length;
     return (
       <div className="posts-wrapper">
-        <div className="posts-container">
-          {posts
-            .filter(post => post.node.frontmatter.title.length > 0)
-            .map(({ node: post }, index) => {
-              {/* An alphabetical list of tags with links */}
-              const tagItems = post.frontmatter.tags.sort().map((tag, index) => {
-                return (
-                  <li key={`tag-item-${index}`} className="tag-item">
-                    <Link key={`tag-link-${index}`} to={`/tags/${tag}`}>
-                      {tag}
-                    </Link>
-                  </li>
-                );
-              });
+        {posts
+          .filter(post => post.node.frontmatter.title.length > 0)
+          .map(({ node: post }, index) => {
+            {/* An alphabetical list of tags with links */}
+            const tagItems = post.frontmatter.tags.sort().map((tag, index) => {
               return (
-                <div className="blog-post-wrapper" key={`post-${index}`}>
-                  <Link className="post-link"
-                    to={post.frontmatter.path}
-                    key={`link-${index}`} >
-                    <Img
-                      sizes={post.frontmatter.image.childImageSharp.sizes}
-                      className="blog-post-featured-image" 
-                      alt={post.frontmatter.alt}
-                    />
+                <li key={`tag-item-${index}`} className="tag-item">
+                  <Link key={`tag-link-${index}`} to={`/tags/${tag}`}>
+                    {tag}
                   </Link>
-                  <div className="blog-post-content">
-                  <h2>{`${totalPosts - index}`} &ndash;
-                    <Link className="post-link" 
-                    to={post.frontmatter.path}
-                    key={`link-${index}`}>
-                      {` ${post.frontmatter.title}`}
-                    </Link>
-                  </h2>
-                  <p className="post-excerpt" key={`excerpt-${index}`}>
-                    {post.excerpt}
-                  </p>
+                </li>
+              );
+            });
+            return (
+              <div className="card-wrapper" key={`post-${index}`}>
+                <Link className="post-link"
+                  to={post.frontmatter.path}
+                  key={`link-${index}`} >
+                  <Img
+                    sizes={post.frontmatter.image.childImageSharp.sizes}
+                    className="blog-post-featured-image" 
+                    alt={post.frontmatter.alt}
+                  />
+                </Link>
+                <div className="blog-post-content">
+                <h2>{`${totalPosts - index}`} &ndash;
+                  <Link className="post-link" 
+                  to={post.frontmatter.path}
+                  key={`link-${index}`}>
+                    {` ${post.frontmatter.title}`}
+                  </Link>
+                </h2>
+                <p className="post-excerpt" key={`excerpt-${index}`}>
+                  {post.excerpt}
+                </p>
+                  <div>
                     <div>
-                      <div>
-                    <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
-                    
-                    <p>Category: <span>
-                      <Link to={`/categories/${post.frontmatter.category}`}> 
-                        {post.frontmatter.category}
-                      </Link>
-                    </span></p> 
-                    <ul className='tag-list'><span>Tags:</span>{tagItems}</ul>
-                      </div>
+                  <strong className="post-date" key={`date-${index}`}>{post.frontmatter.date}</strong>
+                  
+                  <p>Category: <span>
+                    <Link to={`/categories/${post.frontmatter.category}`}> 
+                      {post.frontmatter.category}
+                    </Link>
+                  </span></p> 
+                  <ul className='tag-list'><span>Tags:</span>{tagItems}</ul>
                     </div>
                   </div>
                 </div>
-              );
-            })}
-        </div>            
+              </div>
+            );
+          })}
       </div>
     );
   }

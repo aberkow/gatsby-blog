@@ -9,13 +9,15 @@ import '../sass/styles.scss'
 require('prismjs/themes/prism-okaidia.css');
 
 const TemplateWrapper = ({ children }) =>
-  <div>
+  <div className='site-wrapper'>
     <Helmet
       title="Adam J Berkowitz"
-      meta={[
+      meta={
+        [
         { name: 'description', content: 'Web development blog and personal site for Adam Berkowitz' },
         { name: 'keywords', content: 'web development, blog, javascript, php, wordpress, tutorials, html, css, docker' },
-      ]}
+      ]
+    }
     />
     {/* <style type="text/css">
       {`  
@@ -48,9 +50,14 @@ const TemplateWrapper = ({ children }) =>
       `}
     </style> */}
     <Header />
-    <div className="content-wrapper">
+    <main className="content-wrapper">
+      <ul>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+      </ul>
       {children()}
-    </div>
+    </main>
   </div>
 
 TemplateWrapper.propTypes = {

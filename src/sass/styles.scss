@@ -1,0 +1,45 @@
+main {
+  * + * {
+    margin-top: 1em;
+  }
+}
+
+header {
+  .site-name {
+    font-size: 2em;
+  }
+}
+
+.site-wrapper {
+  max-width: 55em;
+  margin: 0 auto;
+  padding: 1em
+}
+
+.posts-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  grid-gap: 3em;
+}
+
+.card-wrapper {
+  margin: 0;
+  .tag-list {
+    list-style-type: none;
+    margin-left: 0;
+    .tag-item {
+      display: inline-block;
+      margin-left: 1em;
+      margin-top: 0;
+    }
+  }
+}
+
+.blog-post-container {
+  margin: 0 auto;
+  max-width: 45em;
+}
+
+.gatsby-image-wrapper {
+  max-height: 11em;
+}

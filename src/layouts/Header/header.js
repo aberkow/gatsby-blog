@@ -19,11 +19,9 @@ export default class Header extends Component {
   }
   render() {
     return (
-      <div className='header-wrapper'>
-        <span>
-          <Link
-            to="/"
-          >
+      <header className='header-wrapper'>
+        <span className="site-name">
+          <Link to="/">
             Adam J Berkowitz
           </Link>
         </span>
@@ -32,7 +30,7 @@ export default class Header extends Component {
           menuDisplay={this.state.menuDisplay} 
           onClick={this.menuHandler} />
         
-      </div>
+      </header>
     );
   }
 }
