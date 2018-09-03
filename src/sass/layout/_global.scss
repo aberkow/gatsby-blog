@@ -1,0 +1,24 @@
+main {
+  * + * {
+    margin-top: 1em;
+  }
+}
+
+.site-wrapper {
+  display: grid;
+  // grid-template-columns: 12.5em repeat(auto-fit, minmax(12.5em, 1fr));
+  grid-template-columns: minmax(max-content, 10em) repeat(auto-fit, minmax(10em, 1fr));
+  grid-template-rows: 5em max-content max-content;
+  max-width: 75em;
+  margin: 0 auto;
+  padding: 1em
+}
+
+#main-nav {
+  grid-column: 1 / 2;
+}
+
+.header-wrapper,
+.content-wrapper {
+  grid-column: 2 / 4;
+}

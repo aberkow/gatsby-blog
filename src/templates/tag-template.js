@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
-import { BlogPostContent, BlogPostContainer, TagList } from '../utils/styles';
 import { postsWithDataFilter } from '../utils/helpers';
 
 export default class TagRoute extends Component {
@@ -19,12 +18,12 @@ export default class TagRoute extends Component {
       )
     })
     return (
-      <BlogPostContainer>
-        <BlogPostContent>
+      <div>
+        <div>
           <h2>{filteredPosts.length} {filteredPosts.length > 1 ? 'posts' : 'post' } with the tag: {tagToFind}</h2>
-          <TagList className="tag-list">{postLinks}</TagList>
-        </BlogPostContent>
-      </BlogPostContainer>
+          <ul className="tag-list">{postLinks}</ul>
+        </div>
+      </div>
     );
   }
 }

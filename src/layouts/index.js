@@ -3,22 +3,29 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome, faAt, faUser } from '@fortawesome/free-solid-svg-icons';
+
 import Header from '../layouts/Header/header';
+import Navigation from '../layouts/Navigation/Navigation';
 
-import { ContentWrapper, HeaderWrapper, TitleStyle, SubTitleStyle } from '../utils/styles';
-
+import '../sass/styles.scss'
 require('prismjs/themes/prism-okaidia.css');
 
+library.add(faHome, faAt, faUser);
+
 const TemplateWrapper = ({ children }) =>
-  <div>
+  <div className='site-wrapper'>
     <Helmet
       title="Adam J Berkowitz"
-      meta={[
+      meta={
+        [
         { name: 'description', content: 'Web development blog and personal site for Adam Berkowitz' },
         { name: 'keywords', content: 'web development, blog, javascript, php, wordpress, tutorials, html, css, docker' },
-      ]}
+      ]
+    }
     />
-    <style type="text/css">
+    {/* <style type="text/css">
       {`  
           body {
             background-color: #fafafa;
@@ -47,11 +54,12 @@ const TemplateWrapper = ({ children }) =>
             border-radius: 0;
           }
       `}
-    </style>
+    </style> */}
     <Header />
-    <ContentWrapper className="content-wrapper">
+    <Navigation />
+    <main className="content-wrapper">
       {children()}
-    </ContentWrapper>
+    </main>
   </div>
 
 TemplateWrapper.propTypes = {

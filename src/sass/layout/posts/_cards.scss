@@ -1,0 +1,12 @@
+.card-wrapper {
+  margin: 0;
+  .tag-list {
+    list-style-type: none;
+    margin-left: 0;
+    .tag-item {
+      display: inline-block;
+      margin-left: 1em;
+      margin-top: 0;
+    }
+  }
+}

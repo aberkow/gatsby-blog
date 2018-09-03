@@ -1,11 +1,8 @@
 import React from 'react';
-import Link from 'gatsby-link';
-
-import { BlogPostContent, BlogPostContainer, FormButton, FormInputContainer, FormInput, FormTextArea } from '../utils/styles';
 
 const Contact = () =>
-  <BlogPostContainer>
-    <BlogPostContent>
+  <div>
+    <div>
       <h2>Hi Friend!</h2>
       <p>
         Please feel free to be in touch.
@@ -18,37 +15,37 @@ const Contact = () =>
         <div style={{ visibility: `hidden`, height: 0 }}>
           <input name="bot-field" />
         </div>
-        <FormInputContainer>
+        <div>
           <label>Name:</label>
-          <FormInput 
+          <input 
           name="name" 
           placeholder="Sam Smith"
           required 
           size="40"
           type="text"/>
-        </FormInputContainer>
-        <FormInputContainer>
-          <label>Email:<FormInput
+        </div>
+        <div>
+          <label>Email:<input
             name="email"
             placeholder="sam@example.com" 
             type="email"/>
           </label>
-        </FormInputContainer>
-        <FormInputContainer>
+        </div>
+        <div>
           <label>
             Message:
-            <FormTextArea 
+            <textarea 
               cols="50" 
               rows="10" 
               name="message"
-              placeholder="Your message"></FormTextArea>
+              placeholder="Your message"></textarea>
           </label>
-        </FormInputContainer>
-        <FormInputContainer>
-          <FormButton type="submit">Send</FormButton>
-        </FormInputContainer>
+        </div>
+        <div>
+          <button type="submit">Send</button>
+        </div>
       </form>
-    </BlogPostContent>
-  </BlogPostContainer>
+    </div>
+  </div>
 
 export default Contact;
