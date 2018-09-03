@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MenuItem = ({ route, icon, text }) => (
   <Fragment>
-    <li>
-      <Link to={route}><FontAwesomeIcon icon={icon} />{text}</Link>
+    <li className="menu-list_item">
+      <Link to={route} className="menu-list_link">
+        <FontAwesomeIcon icon={icon} className="menu-list_icon" />
+        <span className="menu-list_text">{text}</span>
+      </Link>
     </li>
   </Fragment>
 )
